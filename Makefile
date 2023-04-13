@@ -6,7 +6,9 @@ all:
 	@xelatex $(PAPER)
 
 view:
-	@setsid $(VIEWER) $(OUTPUT) &>/dev/null
+	@test -f $(OUTPUT) && \
+	$(VIEWER) $(OUTPUT) 2>&1&\
+	disown -h $$!
 
 clean:
 	@for ext in aux out log pdf; do rm -v cv.$$ext; done
