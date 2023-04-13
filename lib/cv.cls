@@ -176,7 +176,7 @@ Generated on: \today
   \end{minipage}
   \begin{minipage}{0.2\textwidth}
       \centering
-      \includegraphics[scale=.026]{images/me}
+      \includegraphics[scale=.024]{images/me}
   \end{minipage}      
 \end{figure}
 

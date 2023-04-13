@@ -4,6 +4,8 @@ OUTPUT=cv.pdf
 
 all:
 	@xelatex $(PAPER)
+	@test -d out || mkidr out
+	@cp $(OUTPUT) out
 
 view:
 	@test -f $(OUTPUT) && \
