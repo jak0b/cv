@@ -23,76 +23,39 @@
 
 \begin{minipage}[t]{0.65\textwidth} 
 
+\section{Summary}
+Mid DevOps Engineer with strong knowledge in system maintenance and Linux administration. Well-acquainted with networking ,Docker, Kubernetes, Helm and several cloud platforms. Always willing to learn new frameworks and tools. Enjoys working with terminal applications. Loves breaking and fixing stuff, with the emphasis of as little down-time as possible preferably none.
 
-\section{Jobs}
-\runsubsection{Docmatic (formly Random Forest)}
+\section{Experience}
+\runsubsection{Docmatic.ai (formly Random Forest)}
 \descript{| \position}
-\location{Sep 2018 - Current | Cracow, Poland}
+\location{Sep 2018 - Jul 2022 | Cracow, Poland}
 
- % Hacky fix for awkward extra vertical space
 \vspace{\topsep}
 
 \begin{tightemize}
 \sectionsep
-\item Planning and maintenance of the networking infrastructure of the company - setting up servers (HP, Intel),
-      switches and routers (MikroTik), ensuring network security and reliability.
-\item Managing users and developers resource access using the LDAP protocol and VPN servers
+\item Planning and maintenance of networking infrastructure - setting up servers (HP - iLO, Intel -
+      BMC), switches and routers (MikroTik), network security and reliability
+\item Maintenance and oversight of several Proxmox hosts
+      used for virtualization of multiple Kubernetes clusters deployed on-premises
+\item user and developer resource access management with the use of the LDAP protocol and VPN servers
+      (Wireguard, OpenVPN) - custom solutions 
 \item Configuration of site-to-site VPN servers and clients for multi cloud encrypted communication
-\item Development and deployment of Python based microservices using Flask and Django as backend frameworks,
+\item Development and deployment of Python based micro-services using Flask and Django as backend frameworks,
       with the emphasis on containerization, testing, deployment and monitoring both to the clients
-      with on-premises infrastructure as well as to the ones using cloud providers
-\item Assessment of resource usage of non-containerized applications, 
-\item Migration of on-premise deployments onto the cloud, 
+      with on-premises infrastructure as well as to the ones using diverse cloud providers
+\item Working on test, build and deploy pipelines using Gitlab CI/CD tools
+\item Assessment of resource usage of non-containerized applications
+\item Migration of on-premise deployments onto the cloud
 \item Extensive communications with developers as well as clients' IT departments aimed at troubleshooting
-      their infrastructure and code problems
+      their infrastructure and deployment issues
+\item Maintenance of multi-user Jupyter based kernel hub with multiple kernel bases (Tensorflow,
+      PyTorch, and other Collabora based)
+\item Introduction of Docker to NLP services, serverless deployment onto the cloud
+\item Mentoring and coaching of new developers
+\item Occasional back-end development of Django based applications
 \end{tightemize}
-\sectionsep
-
-
-\section{Projects}
-\runsubsection{Centaur - document management system}
-\descript{| Django - backend, React - frontend, Kubernetes and Helm based deployment}
-\location{2020 - ongoing}
-\begin{tightemize}
-\item Development of Kubernetes configuration files and Helm charts
-\end{tightemize}
-\sectionsep
-
-\runsubsection{Corkscrew - proxy system leveraging multiple subproxies for scraping purposes }
-\descript{| Golang, Docker, Kubernetes}
-\location{2020}
-\begin{tightemize}
-\item 
-\end{tightemize}
-\sectionsep
-
-\section{Experience}
-
-\subsection{Protocols}
-\location{application layer}
-  SSH,
-  DNS,
-  SMTP,
-  IMAP,
-  HTTP,
-  LDAP,
-  DHCP,
-  NFS,
-  TELNET
-
-\location{transport layer}
-  UDP,
-  TCP
-
-\location{network layer}
-  IPv4,
-  IPv6
-
-\location{data link layer}
-  Ethernet,
-  IEEE 802.1Q VLAN
-
-\sectionsep
 
 \end{minipage} 
 \hfill
@@ -101,14 +64,14 @@
 \section{Skills}
 \sectionsep
 
-
 \subsection{Programming}
 \location{Experienced:}
-  Python \separ{} Golang \separ{} Shell Script \\
+  Python \separ{} Shell Script \\
 
 \sectionsep
 \location{Familiar:}
   Rust \separ{}
+  Golang \separ{} 
   C \separ{}
   Lua \separ{}
   JavaScript \separ{}
@@ -116,46 +79,61 @@
   \LaTeX\ \\
 
 \sectionsep
-\subsection{Libraries \& Frameworks }
-\sectionsep
-  \separ{} \location{Python}
-  Django \separ{}
-  Flask \separ{}
-  Jinja \\
-  \sectionsep
-
-  \separ{} \location{Golang}
-  text/template
-  \separ{} Gin \separ{} Gorm \\
-  \sectionsep
-
 \subsection{Tools}
   \sectionsep
            Git 
-  \separ{} PGP 
-  \separ{} OpenSSL 
-  \separ{} Vim/Neovim 
-  \separ{} NGIИX
-  \separ{} Docker
-  \separ{} Containerd
-  \separ{} Systemd
-  \separ{} Kubernetes
-  \separ{} Helm
-  \separ{} Grafana
-  \separ{} Loki
-  \separ{} Prometheus
-  \separ{} Terraform
-  \separ{} OpenLDAP
+  \separ{} OpenSSL, PGP
+  \separ{} GNU Make, Mason
+  \separ{} Vi/Vim/Neovim 
+  \separ{} Træfik, NGIИX, HAProxy
+  \separ{} OpenFaaS
+  \separ{} Docker, Containerd, Podman
+  \separ{} Systemd, OpenRC
+  \separ{} OpenLDAP, SASL, Oauth 2.0
+  \separ{} Ceph, LVM
+  \separ{} Kubernetes, Helm
+  \separ{} Terraform, Ansible
+  \separ{} Prometheus, Grafana, Loki
+  \separ{} Sonatype Nexus
+  \separ{} Gunicorn, uWSGI, Waitress
+  \separ{} gcloud, aws-cli, hcloud, scw-cli
+\sectionsep
+
+\subsection{Management Tools}
+\sectionsep
+  \separ{} \location{Communication}
+  Slack \separ{}
+  Rocket.Chat \separ{}
+  Microsoft Teams \separ{}
+  \sectionsep
+
+  \separ{} \location{Project Managemnet}
+  Trello
+  \separ{} Shortcut (formly Clubhouse) \separ{} Gorm \\
+  \sectionsep
+
+
+\subsection{Linux distributions}
+  \sectionsep
+           Arch
+  \separ{} Debian, Proxmox
+  \separ{} Ubuntu
+  \separ{} CentOS, AlmaLinux
+  \separ{} NixOS
+
+\subsection{Other operating systems}
+  \sectionsep
+           MacOS
+  \separ{} FreeBSD
+  \separ{} Windows
 
 \section{Languages}
   \subsection{Polish}
   mother tongue \\
   \sectionsep
-
   \subsection{English}
   working proficiency \\
   \sectionsep
-
   \subsection{German}
   proficiency with C2 Goethe Institute GDS certificate \\
   \sectionsep
@@ -164,28 +142,65 @@
 
 \end{minipage} 
 
-% \pagebreak
-
-% second page
-
 \begin{minipage}[t]{0.65\textwidth} 
 
-\subsection{Unix}
-  \descript{| Linux distributions: Arch, Debian, Ubuntu, \\
-            | Proxmox (Debian Based), CentOS (now AlmaLinux), NixOS}
-  \sectionsep
-  \descript{| Other Unix operating systems: FreeBSD, MacOS}
+\section{Projects}
+\runsubsection{Centaur}
+\descript{| micro-service based document management and ML/NLP processing system}
+\sectionsep \sectionsep
+\begin{tightemize}
+\item Software: Django, PostgreSQL, Redis, RabbitMQ, Elasticsearch, Docker, Kubernetes, NGINX Ingress Controller
+\end{tightemize}
+\sectionsep
 
-\subsection{Applications}
-  \separ{} \descript{Docker, Podman, Containerd}
-  \separ{} \descript{NGINX}
+\runsubsection{Corkscrew }
+\descript{proxy system that connects external proxies for scraping purposes}
+\begin{tightemize}
+\item Software: Golang, Docker, Kubernetes
+\end{tightemize}
+\sectionsep
+
+\section{Cloud platforms}
+\sectionsep
+\subsection{Amazon Web Services (AWS)}
+  \location{S3}
+  \location{EC2}
+  \location{Elastic Kubernetes Service (EKS)}
+  \location{Elastic Load Balancing (ELB)}
+
+\sectionsep
+\subsection{Google Cloud Platform (GCP)}
+  \location{Compute Engine Compute}
+  \location{VPC networks}
+  \location{Kubernetes Engine (GKE)}
+  \location{Cloud Run}
+  \location{Artifact Registry}
+
+\sectionsep
+\subsection{Hetzner Cloud}
+\location{Servers, Volumes, Networks, Firewalls, Security}
+
+\sectionsep
+\subsection{Scaleway}
+  \location{Compute - Instances}
+  \location{Containers - Kubernetes, Container Registry}
+  \location{Storage - Object Storage}
+  \location{Network - VPC, Private Networks, Load Balancers, Domains and DNS}
 \end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth} 
+\section{Protocols}
 
-\begin{minipage}[t]{0.20\textwidth} 
+\location{application layer}
+SSH \separ{} DNS \separ{} SMTP \separ{} IMAP \separ{} LDAP
+\separ{} DHCP \separ{} HTTP/HTTPS \separ{}
+TLS \separ{} Wireguard \separ{} OpenVPN \\
+\location{transport layer} UDP \separ{} TCP \\
+\location{network layer} IPv4 \separ{} IPv6 \separ{} ICMP \separ{} IGMP \separ{} IPsec \\
+\location{data link layer} VLAN \\
 
 \section{Education}
 \sectionsep
-
 \subsection{Cracow University of Economics}
 \location{Sep 2017 - Sep 2021}
 \sectionsep
@@ -193,6 +208,7 @@
 \sectionsep
 \location{Thesis: "Rust a possible successor to C - overview of the language and sample programs"}
 \location{Result of graduation: 5.0 / 5.5}
+\sectionsep
 
 \end{minipage}
 \end{document}

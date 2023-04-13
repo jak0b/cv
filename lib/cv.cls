@@ -1,5 +1,5 @@
 % Intro Options
-\ProvidesClass{lib/cv}[2022/06/19 CV class]
+\ProvidesClass{lib/cv}[2023/03/27 CV class]
 
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption{print}{\def\@cv@print{}}
@@ -176,7 +176,7 @@ Generated on: \today
   \end{minipage}
   \begin{minipage}{0.2\textwidth}
       \centering
-      \includegraphics[scale=.032]{images/first}
+      \includegraphics[scale=.026]{images/me}
   \end{minipage}      
 \end{figure}
 
