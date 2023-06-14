@@ -176,14 +176,14 @@ Generated on: \today
   \end{minipage}
   \begin{minipage}{0.2\textwidth}
       \centering
-      \includegraphics[scale=.024]{images/me}
+      \includegraphics[scale=.02]{images/me}
   \end{minipage}      
 \end{figure}
 
-% \vspace{-10pt}
+\vspace{-18pt}
 
 % \noindent\makebox[\linewidth]{\color{title}\rule{\paperwidth}{0pt}}
-\vspace{-10pt}
+% \vspace{-10pt}
 
 \fontspec[Path = \pathmonofont]{\monofont}\fontsize{10pt}{14pt}\selectfont #4
 
