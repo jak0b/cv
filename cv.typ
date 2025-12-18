@@ -16,7 +16,7 @@
     firstname: "Jakub",
     lastname: "Stepien",
     email: "work@jak0b.com",
-    position: ("DevOps Enginner"),
+    position: ("DevOps Engineer"),
     linkedin: "jak0b",
     github: "jak0b",
     phone: "+48 518 337 454"
@@ -25,9 +25,9 @@
 
 #side[
   = About Me
-  Experienced DevOps Engineer with 6 years of expertise in system maintenance and Linux administration and
-  software development. Well-versed in networking, Docker, Kubernetes, Helm, and multiple cloud platforms (AWS, GCP)
-  with a focus on migrating on-premise resources to the cloud.
+  Experienced DevOps Engineer with 6 years of expertise in system maintenance, Linux administration,
+  and software development. Well‑versed in networking, Docker, Kubernetes, Helm, and multiple cloud platforms (AWS, GCP),
+  with a focus on migrating on‑premises resources to the cloud.
 
   = Skills
   #item-with-level("Unix scripting", 5)
@@ -42,9 +42,9 @@
   #item-with-level("Networking & Security", 4)
 
   = Languages
-  #item-with-level("Polish", 5,  subtitle: "native tongue")
-  #item-with-level("German", 4,  subtitle: "proficiency (C2 Goethe Institute GDS)")
-  #item-with-level("English", 4, subtitle: "working proficiency with many years of experience")
+  #item-with-level("Polish", 5,  subtitle: "mother tongue")
+  #item-with-level("German", 4,  subtitle: "proficiency – C2, Goethe Institute GDS")
+  #item-with-level("English", 4, subtitle: "working proficiency, many years of experience")
 
 #set text( size: 5pt)
 #set align(bottom)
@@ -72,24 +72,24 @@
   location: "remote",
   date: "Aug 2023 - now",
   [
-  - Migrated deployment processes from a pipeline system (internal Jenkins based) to a GitOps approach (ArgoCD).
-  - Troubleshooting networking issues related to communication of AWS and copmany internal systems
-  - Provisioning cloud resources in multiple environments using Terraform:
+  - Migrated deployment processes from an internal Jenkins‑based pipeline system to a GitOps approach (ArgoCD)
+  - Troubleshot networking issues related to communication between AWS and company internal systems
+  - Provisioned cloud resources in multiple environments using Terraform:
     #list(tight: true,
       [AWS EKS with auto-scaling and diverse networking configurations],
       [AWS MSK (Kafka) cluster with Snowflake connector],
       [AWS MemoryDB],
     )
-  - Automated certificate issuance and management within an internal Private PKI for Kubernetes and Certificate Manager
-  - Configured Prometheus alerting rules for K8s clusters
-  - Importing existing resources into Terraform to manage them from a single source
+  - Automated certificate issuance and management within an internal private PKI for Kubernetes and AWS Certificate Manager
+  - Configured Prometheus alerting rules for Kubernetes clusters
+  - Imported existing resources into Terraform to manage them from a single source.
   - Provided assistance to developers regarding networking, reverse proxy, and load balancer issues
   - Implemented OpenID Connect across multiple micro-services
-  - Setting up new and refining existing deployment pipelines for Terraform
+  - Set up new and refined existing deployment pipelines for Terraform
   - Eliminated unnecessary cloud resources, leading to reduced operational costs for the company
   - Optimized EKS costs by implementing Karpenter and leveraging spot instances for resource allocation.
-  - Production deployment readiness and rapid resolution of urgent deployment issues
-  - Collaborated with developers across Pacific and India time zones.
+  - Ensured production deployment readiness and rapid resolution of urgent deployment issues
+  - Collaborated with developers across the Pacific and Indian time zones
   ],
 )
 
@@ -99,7 +99,7 @@
   location: "Krakow, Poland",
   date: "Sep 2018 - Jul 2022",
   [
-    - Managed networking infrastructure: servers (HP iLO, Intel BMC), switches, routers (MikroTik), security, and reliability  
+    - Managed networking infrastructure: servers (HP iLO, Intel BMC), switches, routers (MikroTik) for security and reliability
     - Maintained Proxmox hosts for virtualization of Kubernetes clusters  
     - Managed user and developer access via LDAP, VPNs (WireGuard, OpenVPN)  
     - Configured site-to-site VPNs for multi-cloud encrypted communication  
