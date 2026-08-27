@@ -1,6 +1,6 @@
-#import "@preview/datify:1.0.0": custom-date-format
-#import "@preview/neat-cv:0.6.0": cv, side, entry, item-with-level, contact-info, social-links
-#import "@preview/linguify:0.4.2"
+#import "@preview/datify:1.3.0": custom-date-format
+#import "@preview/neat-cv:1.2.0": cv, side, entry, item-with-level, contact-info, social-links
+#import "@preview/linguify:0.5.0"
 
 #let gdpd_text = "I authorise the processing of personal data contained within my CV, according to GDPR (EU) 2016/679, Article 6.1(a)."
 
