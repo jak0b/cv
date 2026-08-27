@@ -24,6 +24,14 @@
   ),
 )
 
+#place(
+  dy: -30pt,
+  [
+    #set text(size: 5pt, fill: rgb("#8D949D"))
+    #llm_text
+  ]
+)
+
 #side[
   = About Me
   Experienced DevOps Engineer with 6 years of expertise in system maintenance, Linux administration,
