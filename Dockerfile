@@ -1,8 +1,8 @@
-FROM debian:12.0
+FROM ghcr.io/typst/typst:0.14.2
 
-RUN apt-get update && \
-    apt-get install -y texlive-base texlive-xetex curl
+COPY cv.typ .
+COPY images images
 
-RUN apt-get clean autoclean && \ 
-    apt-get autoremove --yes && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/
+RUN typst fonts
+
+RUN typst compile cv.typ
