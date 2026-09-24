@@ -10,8 +10,8 @@
   accent-color: rgb("#407287"),
   header-color: rgb("#8D949D"),
   date: custom-date-format(datetime.today()),
-  body-font: "Iosevka NF",
-  heading-font: "Iosevka NFM Medium Obl",
+  body-font: "IosevkaTerm NF",
+  heading-font: "IosevkaTerm NFP Medium Obl",
   author: (
     firstname: "Jakub",
     lastname: "Stepien",
@@ -30,16 +30,15 @@
   with a focus on migrating on‑premises resources to the cloud.
 
   = Skills
-  #item-with-level("Unix scripting", 5)
+  #item-with-level("AWS: EC2, EKS, VPC, IAM, KMS", 4)
+  #item-with-level("Terraform & Infrastructure as Code", 3)
+  #item-with-level("Kubernetes, Helm & Docker", 4)
   #item-with-level("Linux administration", 5)
-  #item-with-level("Kubernetes", 4)
-  #item-with-level("Golang", 3)
-  #item-with-level("Python", 4)
-  #item-with-level("AWS", 4)
-  #item-with-level("Terraform & Pulumi", 3)
-  #item-with-level("Monitoring & Alerting", 3)
-  #item-with-level("CI/CD", 4)
-  #item-with-level("Networking & Security", 4)
+  #item-with-level("Argo CD, Jenkins & GitLab CI", 4)
+  #item-with-level("CloudWatch, Prometheus & Grafana", 3)
+  #item-with-level("Python, Go & Bash", 4)
+  #item-with-level("Networking & Cloud Security", 4)
+  #item-with-level("Splunk & Loki", 3)
 
   = Languages
   #item-with-level("Polish", 5,  subtitle: "mother tongue")
@@ -68,28 +67,27 @@
 
 #entry(
   title: "DevOps Engineer",
-  institution: "Grid Dynamics (contractor for one of the FAANG companies)",
+  institution: "Grid Dynamics (contractor for a US based company)",
   location: "remote",
-  date: "Aug 2023 - now",
+  date: "Aug 2023 - Present",
   [
-  - Managed and updated Ruby on Rails applications using Ansible for configuration management and automation, ensuring consistent deployment environments and streamlined updates.
-  - Automated build, test, and deployment processes for Rails apps with Jenkins, reducing deployment time and improving reliability of release cycles.
-  - Migrated deployment processes from an internal Jenkins‑based pipeline system to a GitOps approach (ArgoCD)
-  - Migrated AWS CloudFormation stacks to Pulumi managed with CI process automation
-  - Troubleshot networking issues related to communication between AWS and company internal systems
+  - Supported the deployment of a low-latency manufacturing system written in Go
+  - Participated in an on-call rotation, troubleshooting incidents and following operational runbooks
   - Provisioned cloud resources in multiple environments using Terraform:
     #list(tight: true,
       [AWS EC2 & EKS with auto-scaling and diverse networking configurations],
       [AWS MSK (Kafka) cluster with Snowflake connector],
       [AWS MemoryDB],
     )
-  - Automated certificate issuance and management within an internal private PKI for Kubernetes and AWS Certificate Manager
+  - Imported existing cloud resources into Terraform to establish a single source of truth
+  - Optimized EKS costs with Karpenter and spot instances
+  - Migrated AWS CloudFormation stacks to Pulumi and automated deployments through CI pipelines
+  - Migrated deployments from internal Jenkins pipelines to a GitOps approach with Argo CD
+  - Automated certificate issuance and management using an internal private PKI
   - Configured Prometheus alerting rules for Kubernetes clusters
-  - Imported existing resources into Terraform to manage them from a single source.
-  - Provided assistance to developers regarding networking, reverse proxy, and load balancer issues
-  - Implemented OIDC auth/authz across multiple micro-services
-  - 
-  - Optimized EKS costs by implementing Karpenter and leveraging spot instances for resource allocation.
+  - Troubleshot AWS connectivity, reverse proxy, and load balancer issues with development teams
+  - Implemented OIDC authentication and authorization across multiple microservices
+  - Managed Rails applications with Ansible and automated build, test, and deployment workflows with Jenkins
   ],
 )
 
@@ -100,14 +98,13 @@
   date: "Sep 2018 - Jul 2022",
   [
     - Managed networking infrastructure: servers (HP iLO, Intel BMC), switches, routers (MikroTik) for security and reliability
-    - Maintained Proxmox hosts for virtualization of Kubernetes clusters  
-    - Managed user and developer access via LDAP, VPNs (WireGuard, OpenVPN)  
-    - Configured site-to-site VPNs for multi-cloud encrypted communication  
-    - Developed and deployed Python micro-services (Flask, Django) with containerization, testing, and deployment across on-premises and cloud environments  
-    - Built and maintained CI/CD pipelines using GitLab  
-    - Monitored resource usage of non-containerized apps and migrated resources to the cloud  
-    - Maintained multi-user Jupyter kernels (TensorFlow, PyTorch, Anaconda)  
-    - Introduced Docker and serverless (OpenFaaS) deployment for NLP services  
+    - Maintained Proxmox hosts for virtualization of Kubernetes clusters
+    - Managed user and developer access via LDAP, VPNs (WireGuard, OpenVPN)
+    - Configured site-to-site VPNs for multi-cloud encrypted communication
+    - Developed and deployed Python microservices (Flask, Django) with containerization
+    - Built and maintained CI/CD pipelines using GitLab
+    - Monitored resource usage of non-containerized apps and migrated resources to the cloud
+    - Maintained multi-user Jupyter kernels (TensorFlow, PyTorch, Anaconda)
     - Mentored new developers and contributed to Django backend development
   ],
 )
