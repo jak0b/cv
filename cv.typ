@@ -42,7 +42,7 @@
 
   = Languages
   #item-with-level("Polish", 5,  subtitle: "mother tongue")
-  #item-with-level("German", 4,  subtitle: "proficiency – C2, Goethe Institute GDS")
+  #item-with-level("German", 4, subtitle: [proficiency – C2,#linebreak()Goethe Institute GDS])
   #item-with-level("English", 4, subtitle: "working proficiency, many years of experience")
 
 #set text( size: 3.5pt)
