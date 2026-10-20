@@ -7,8 +7,8 @@ Pushes to `main` and manual runs on `main` create preview deployments after the
 build succeeds. The preview branch uses Git's short commit SHA, so each commit
 gets a `<short-sha>.<project>.pages.dev` alias. Publishing a GitHub release deploys
 the tagged commit to production. After each deployment, the workflow prints its
-URL and an English CV link in the job log and summary. Pull requests only build
-the PDFs.
+URL and links to all four CV versions in the job log and summary. Pull requests
+only build the PDFs.
 
 In the [cloudflare-deploy environment](https://github.com/jak0b/cv/settings/environments),
 add these secrets:

@@ -102,10 +102,16 @@ jobs:
           cv_base_url="${cv_base_url%/}"
           echo "CV deployment: $cv_base_url"
           echo "English CV: $cv_base_url/cv.pdf"
+          echo "German CV: $cv_base_url/cv-de.pdf"
+          echo "English CV without picture: $cv_base_url/cv-no-picture.pdf"
+          echo "German CV without picture: $cv_base_url/cv-de-no-picture.pdf"
           {
             echo '## CV deployment'
             echo
             echo "[Open deployment]($cv_base_url)"
             echo
-            echo "[English CV]($cv_base_url/cv.pdf)"
+            echo "- [English CV]($cv_base_url/cv.pdf)"
+            echo "- [German CV]($cv_base_url/cv-de.pdf)"
+            echo "- [English CV without picture]($cv_base_url/cv-no-picture.pdf)"
+            echo "- [German CV without picture]($cv_base_url/cv-de-no-picture.pdf)"
           } >> "$GITHUB_STEP_SUMMARY"
