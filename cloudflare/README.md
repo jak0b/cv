@@ -4,11 +4,14 @@ The [Build CV workflow](../.github/workflows/build-cv.yml) deploys the English
 and German PDFs, each with and without a picture, to the existing Cloudflare Pages
 project serving `cv.jak0b.com`.
 Pushes to `main` and manual runs on `main` create preview deployments after the
-build succeeds. The preview branch uses Git's short commit SHA, so each commit
-gets a `<short-sha>.<project>.pages.dev` alias. Publishing a GitHub release deploys
-the tagged commit to production. After each deployment, the workflow prints its
-URL and links to all four CV versions in the job log and summary. Pull requests
-only build the PDFs.
+build succeeds. Cloudflare assigns each preview an immutable URL such as
+`<random-hash>.<project>.pages.dev`. The workflow names the preview branch after
+Git's short commit SHA, so Cloudflare also gives it a
+`<short-sha>.<project>.pages.dev` alias. The random hash is unrelated to the
+commit SHA and cannot be chosen through Wrangler; both addresses serve the same
+deployment. Publishing a GitHub release deploys the tagged commit to production.
+After each deployment, the workflow prints both available addresses and links to
+all four CV versions in the job log and summary. Pull requests only build the PDFs.
 
 In the [cloudflare-deploy environment](https://github.com/jak0b/cv/settings/environments),
 add these secrets:

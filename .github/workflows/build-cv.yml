@@ -103,7 +103,12 @@ jobs:
             exit 1
           fi
           cv_base_url="${cv_base_url%/}"
-          echo "CV deployment: $cv_base_url"
+          if [[ -n "$DEPLOYMENT_URL" ]]; then
+            echo "Immutable deployment: $DEPLOYMENT_URL"
+          fi
+          if [[ -n "$DEPLOYMENT_ALIAS_URL" ]]; then
+            echo "Commit alias: $DEPLOYMENT_ALIAS_URL"
+          fi
           echo "English CV: $cv_base_url/cv.pdf"
           echo "German CV: $cv_base_url/cv-de.pdf"
           echo "English CV without picture: $cv_base_url/cv-no-picture.pdf"
@@ -111,7 +116,12 @@ jobs:
           {
             echo '## CV deployment'
             echo
-            echo "[Open deployment]($cv_base_url)"
+            if [[ -n "$DEPLOYMENT_URL" ]]; then
+              echo "[Open immutable deployment]($DEPLOYMENT_URL)"
+            fi
+            if [[ -n "$DEPLOYMENT_ALIAS_URL" ]]; then
+              echo "[Open commit alias]($DEPLOYMENT_ALIAS_URL)"
+            fi
             echo
             echo "- [English CV]($cv_base_url/cv.pdf)"
             echo "- [German CV]($cv_base_url/cv-de.pdf)"
