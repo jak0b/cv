@@ -1,0 +1,57 @@
+name: Build CV
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TYPST_FONT_PATHS: ${{ runner.temp }}/fonts
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: '0.14.2'
+          cache-dependency-path: cv.typ
+
+      - name: Install Iosevka Nerd Fonts
+        run: |
+          mkdir -p "$TYPST_FONT_PATHS"
+          curl --fail --location --retry 3 \
+            --output "$RUNNER_TEMP/Iosevka.tar.xz" \
+            https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.tar.xz
+          tar -xJf "$RUNNER_TEMP/Iosevka.tar.xz" -C "$TYPST_FONT_PATHS"
+
+      - name: Install Font Awesome icons
+        run: |
+          curl --fail --location --retry 3 \
+            --output "$RUNNER_TEMP/fontawesome.zip" \
+            https://github.com/FortAwesome/Font-Awesome/releases/download/7.0.1/fontawesome-free-7.0.1-desktop.zip
+          unzip -q "$RUNNER_TEMP/fontawesome.zip" '*.otf' -d "$TYPST_FONT_PATHS"
+
+      - name: Verify required fonts
+        run: |
+          typst fonts > "$RUNNER_TEMP/fonts.txt"
+          grep -Fx 'Iosevka NF' "$RUNNER_TEMP/fonts.txt"
+          grep -Fx 'Iosevka NFP Medium Obl' "$RUNNER_TEMP/fonts.txt"
+          grep -Fx 'Font Awesome 7 Free' "$RUNNER_TEMP/fonts.txt"
+          grep -Fx 'Font Awesome 7 Brands' "$RUNNER_TEMP/fonts.txt"
+
+      - name: Build PDF
+        run: make
+
+      - name: Upload CV
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv
+          path: cv.pdf
+          if-no-files-found: error
