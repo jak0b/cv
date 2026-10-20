@@ -16,8 +16,8 @@ The scheduled update workflow keeps the versions below and in `README.md` in syn
 It also checks the Typst package index and updates `@preview` package imports in
 the root `.typ` files, including `datify` and `neat-cv` in `cv-template.typ`.
 
-Install Typst (0.14.2 matches CI), Iosevka Nerd Fonts 3.4.0, and
-Font Awesome Free 7.0.1 desktop fonts. The required font families are
+Install Typst (0.15.1 matches CI), Iosevka Nerd Fonts 3.5.1, and
+Font Awesome Free 7.3.1 desktop fonts. The required font families are
 `Iosevka NF`, `Iosevka NFP Medium Obl`, `Font Awesome 7 Free`, and
 `Font Awesome 7 Brands`. Check available fonts with `typst fonts`.
 The first build needs network access to download the packages imported by `cv.typ`.

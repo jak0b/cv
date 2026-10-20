@@ -11,11 +11,11 @@ A **one-page**, **two asymmetric column** CV written in Typst using
 Install [Typst](https://typst.app/) to build the CV. The first build downloads
 the packages imported by `cv.typ`.
 
-Install [Iosevka Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.4.0)
+Install [Iosevka Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.5.1)
 (`Iosevka.tar.xz`), which provides the `Iosevka NF` and
 `Iosevka NFP Medium Obl` families used by the CV.
 The template's contact and social icons also require the desktop fonts from
-[Font Awesome Free 7](https://github.com/FortAwesome/Font-Awesome/releases/tag/7.0.1).
+[Font Awesome Free 7](https://github.com/FortAwesome/Font-Awesome/releases/tag/7.3.1).
 
 ## Build
 
@@ -43,8 +43,8 @@ PDFs are ignored by Git.
 
 Pinned tool and font versions live in [.github/dependencies.json](.github/dependencies.json).
 The [Build CV workflow](.github/workflows/build-cv.yml) runs on pushes, pull
-requests, and manual dispatches. It installs Typst 0.14.2, Iosevka Nerd Fonts
-3.4.0, and Font Awesome Free 7.0.1, builds both language versions, and uploads
+requests, and manual dispatches. It installs Typst 0.15.1, Iosevka Nerd Fonts
+3.5.1, and Font Awesome Free 7.3.1, builds both language versions, and uploads
 `cv.pdf` and `cv-de.pdf` together as the `cv` artifact. Download it from the workflow run's **Artifacts** section.
 
 The [Update build dependencies workflow](.github/workflows/update-dependencies.yml)
