@@ -3,6 +3,9 @@ jak0b's CV
 A **one-page**, **two asymmetric column** CV written in Typst using
 [neat-cv](https://typst.app/universe/package/neat-cv).
 
+- [English CV (PDF)](https://cv.jak0b.com/cv.pdf)
+- [German CV (PDF)](https://cv.jak0b.com/cv-de.pdf)
+
 ## Dependencies
 
 Install [Typst](https://typst.app/) to build the CV. The first build downloads
