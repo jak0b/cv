@@ -146,8 +146,8 @@
           [Deployment und Rufbereitschaft für ein latenzarmes Fertigungssystem in Go unterstützt; Kubernetes-Alarme in Prometheus konfiguriert und Probleme mit AWS-Netzwerken, Reverse-Proxys und Load-Balancern behoben],
         )
       - #t(
-          [Managed Rails applications with Ansible and automated build, test, and deployment workflows with Jenkins],
-          [Rails-Anwendungen mit Ansible verwaltet; Build, Tests und Deployments mit Jenkins automatisiert],
+          [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date without downtime],
+          [Ältere Ruby-on-Rails-Anwendungen als systemd-Dienste mit Ansible betreut; Builds, Tests und Deployments mit Jenkins automatisiert und die Systeme ohne Ausfallzeiten aktuell gehalten],
         )
       ],
     )
