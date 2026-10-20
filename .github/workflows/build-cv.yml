@@ -19,7 +19,7 @@ jobs:
         uses: typst-community/setup-typst@v5
         with:
           typst-version: '0.14.2'
-          cache-dependency-path: '**/*.typ'
+          cache-dependency-path: cv-template.typ
 
       - name: Configure font directory
         run: echo "TYPST_FONT_PATHS=$RUNNER_TEMP/fonts" >> "$GITHUB_ENV"
