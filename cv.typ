@@ -34,8 +34,8 @@
       footer: [
         #set align(center)
         #set text(size: 5pt, fill: rgb("#777777"))
-        #gdpr-text
-        #block(above: 4pt)[#text(size: 7pt)[Jakub Stepien CV · #cv-date]]
+        #text(size: 7pt)[Jakub Stepien CV · #cv-date]
+        #block(above: 4pt)[#gdpr-text]
       ],
       body-font: "Iosevka NF",
       heading-font: "Iosevka NFP Medium Obl",
