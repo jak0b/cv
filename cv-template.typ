@@ -132,8 +132,12 @@
           [EKS-Kosten mit Karpenter und Spot-Instanzen optimiert],
         )
       - #t(
-          [Migrated AWS CloudFormation stacks to Pulumi and automated deployments through CI pipelines],
-          [AWS-CloudFormation-Stacks zu Pulumi migriert und Deployments über CI-Pipelines automatisiert],
+          [Used Claude and Codex for DevOps work],
+          [Claude und Codex für DevOps-Aufgaben eingesetzt],
+        )
+      - #t(
+          [Migrated AWS CloudFormation stacks to Pulumi with Claude and automated deployments through CI pipelines],
+          [AWS-CloudFormation-Stacks mit Claude zu Pulumi migriert und Deployments über CI-Pipelines automatisiert],
         )
       - #t(
           [Migrated deployments from internal Jenkins pipelines to a GitOps approach with Argo CD],
