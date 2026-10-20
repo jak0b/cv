@@ -43,7 +43,7 @@
         firstname: "Jakub",
         lastname: "Stepien",
         email: "work@jak0b.com",
-        position: ("DevOps Engineer"),
+        position: ("Cloud DevOps & System AI Engineer"),
         custom-links: (
           (icon-name: "github", url: "https://github.com/jak0b", label: "https://github.com/jak0b"),
           (icon-name: "linkedin", url: "https://www.linkedin.com/in/jak0b", label: "https://www.linkedin.com/in/jak0b"),
