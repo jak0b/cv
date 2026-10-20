@@ -31,3 +31,34 @@ requests, and manual dispatches. It installs Typst 0.14.2, Iosevka Nerd Fonts
 3.4.0, and Font Awesome Free 7.0.1, runs `make`, and uploads `cv.pdf` as the `cv` artifact. Download it from
 the workflow run's **Artifacts** section.
 
+## Cloudflare Pages deployment
+
+The workflow can deploy the same PDF artifact to the existing Cloudflare Pages
+project serving `cv.jak0b.com`. Successful pushes to `main` and manual runs on
+`main` deploy automatically once the settings below are configured. Pull requests
+only build the PDF.
+
+In [GitHub Actions settings](https://github.com/jak0b/cv/settings/secrets/actions),
+add these repository secrets:
+
+- `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with **Account > Cloudflare Pages
+  > Edit**, scoped to the account hosting the project.
+- `CLOUDFLARE_ACCOUNT_ID`: the account ID from the Cloudflare dashboard.
+
+Add these repository variables under **Settings > Secrets and variables > Actions
+> Variables**:
+
+- `CLOUDFLARE_PAGES_PROJECT`: the existing Pages project name, rather than the
+  custom domain. Setting this variable enables deployment.
+- `CLOUDFLARE_PAGES_BRANCH` (optional): the project's production branch in
+  Cloudflare, if it is not `main`. This must match to update the production site.
+
+Deployments upload `cv.pdf` and a redirect from `/` to `/cv.pdf`, replacing the
+project's current site files. The existing custom-domain binding stays on the
+Cloudflare project. If the project has Git integration, disable its automatic
+production builds when enabling this workflow to avoid competing deployments.
+
+See [Cloudflare's CI deployment guide](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/)
+for API token setup. After configuring the settings, run **Build CV** manually on
+`main` to publish the current CV.
+
