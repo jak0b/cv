@@ -97,16 +97,21 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deploy_cv.outputs.deployment-url }}
           DEPLOYMENT_ALIAS_URL: ${{ steps.deploy_cv.outputs.pages-deployment-alias-url }}
         run: |
-          cv_base_url="${DEPLOYMENT_ALIAS_URL:-$DEPLOYMENT_URL}"
-          if [[ -z "$cv_base_url" ]]; then
+          if [[ -z "$DEPLOYMENT_URL" && -z "$DEPLOYMENT_ALIAS_URL" ]]; then
             echo '::error::Wrangler did not return a deployment URL'
             exit 1
           fi
+          if [[ "$GITHUB_EVENT_NAME" == 'release' ]]; then
+            cv_base_url='https://cv.jak0b.com'
+          else
+            cv_base_url="${DEPLOYMENT_ALIAS_URL:-$DEPLOYMENT_URL}"
+          fi
           cv_base_url="${cv_base_url%/}"
+          echo "CV site: $cv_base_url"
           if [[ -n "$DEPLOYMENT_URL" ]]; then
             echo "Immutable deployment: $DEPLOYMENT_URL"
           fi
-          if [[ -n "$DEPLOYMENT_ALIAS_URL" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" != 'release' && -n "$DEPLOYMENT_ALIAS_URL" ]]; then
             echo "Commit alias: $DEPLOYMENT_ALIAS_URL"
           fi
           echo "English CV: $cv_base_url/cv.pdf"
@@ -116,11 +121,9 @@ jobs:
           {
             echo '## CV deployment'
             echo
+            echo "[Open CV site]($cv_base_url)"
             if [[ -n "$DEPLOYMENT_URL" ]]; then
               echo "[Open immutable deployment]($DEPLOYMENT_URL)"
-            fi
-            if [[ -n "$DEPLOYMENT_ALIAS_URL" ]]; then
-              echo "[Open commit alias]($DEPLOYMENT_ALIAS_URL)"
             fi
             echo
             echo "- [English CV]($cv_base_url/cv.pdf)"

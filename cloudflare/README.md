@@ -10,8 +10,9 @@ Git's short commit SHA, so Cloudflare also gives it a
 `<short-sha>.<project>.pages.dev` alias. The random hash is unrelated to the
 commit SHA and cannot be chosen through Wrangler; both addresses serve the same
 deployment. Publishing a GitHub release deploys the tagged commit to production.
-After each deployment, the workflow prints both available addresses and links to
-all four CV versions in the job log and summary. Pull requests only build the PDFs.
+The workflow links to the commit alias for previews and `https://cv.jak0b.com`
+for releases. It also prints the immutable deployment URL and links to all four
+CV versions in the job log and summary. Pull requests only build the PDFs.
 
 In the [cloudflare-deploy environment](https://github.com/jak0b/cv/settings/environments),
 add these secrets:
