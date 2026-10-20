@@ -120,36 +120,36 @@
       date: date-range((2023, 8), (2026, 10)),
       [
       - #t(
-          [Provisioned AWS infrastructure across multiple environments with Terraform: EC2, EKS, MSK (Kafka) with a Snowflake connector, and MemoryDB],
-          [AWS-Infrastruktur mit Terraform in mehreren Umgebungen bereitgestellt: EC2, EKS, MSK (Kafka) mit Snowflake-Konnektor und MemoryDB],
+          [Provisioned *AWS infrastructure* across multiple environments with *Terraform*: EC2, EKS, MSK (Kafka) with a Snowflake connector, and MemoryDB],
+          [*AWS-Infrastruktur* mit *Terraform* in mehreren Umgebungen bereitgestellt: EC2, EKS, MSK (Kafka) mit Snowflake-Konnektor und MemoryDB],
         )
       - #t(
           [Imported existing cloud resources into Terraform to establish a single source of truth],
           [Bestehende Cloud-Ressourcen zur zentralen Verwaltung in Terraform importiert],
         )
       - #t(
-          [Optimized EKS costs with Karpenter and spot instances],
-          [EKS-Kosten mit Karpenter und Spot-Instanzen optimiert],
+          [Optimized *EKS costs* with Karpenter and spot instances],
+          [*EKS-Kosten* mit Karpenter und Spot-Instanzen optimiert],
         )
       - #t(
           [Migrated AWS CloudFormation stacks to Pulumi and automated infrastructure deployments through CI pipelines],
           [AWS-CloudFormation-Stacks zu Pulumi migriert und Infrastruktur-Deployments über CI-Pipelines automatisiert],
         )
       - #t(
-          [Migrated deployments from internal Jenkins pipelines to a GitOps approach with Argo CD],
-          [Deployments von internen Jenkins-Pipelines auf GitOps mit Argo CD umgestellt],
+          [Migrated deployments from internal Jenkins pipelines to *GitOps with Argo CD*],
+          [Deployments von internen Jenkins-Pipelines auf *GitOps mit Argo CD* umgestellt],
         )
       - #t(
-          [Automated certificate management with a private PKI and implemented OIDC authentication and authorization across multiple microservices],
-          [Zertifikatsverwaltung mit privater PKI automatisiert und OIDC-Authentifizierung und -Autorisierung für mehrere Microservices implementiert],
+          [Automated certificate management with a private PKI and implemented *OIDC authentication and authorization* across multiple microservices],
+          [Zertifikatsverwaltung mit privater PKI automatisiert und *OIDC-Authentifizierung und -Autorisierung* für mehrere Microservices implementiert],
         )
       - #t(
-          [Supported deployments and on-call incident response for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
-          [Deployment und Rufbereitschaft für ein latenzarmes Fertigungssystem in Go unterstützt; Kubernetes-Alarme in Prometheus konfiguriert und Probleme mit AWS-Netzwerken, Reverse-Proxys und Load-Balancern behoben],
+          [Supported deployments and *on-call incident response* for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
+          [Deployment und *Rufbereitschaft* für ein latenzarmes Fertigungssystem in Go unterstützt; Kubernetes-Alarme in Prometheus konfiguriert und Probleme mit AWS-Netzwerken, Reverse-Proxys und Load-Balancern behoben],
         )
       - #t(
-          [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date without downtime],
-          [Ältere Ruby-on-Rails-Anwendungen als systemd-Dienste mit Ansible betreut; Builds, Tests und Deployments mit Jenkins automatisiert und die Systeme ohne Ausfallzeiten aktuell gehalten],
+          [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date *without downtime*],
+          [Ältere Ruby-on-Rails-Anwendungen als systemd-Dienste mit Ansible betreut; Builds, Tests und Deployments mit Jenkins automatisiert und die Systeme *ohne Ausfallzeiten* aktuell gehalten],
         )
       - #t(
           [Mentored DevOps engineers],
@@ -165,24 +165,24 @@
       date: date-range((2018, 9), (2022, 7)),
       [
         - #t(
-            [Managed Linux servers, switches, MikroTik routers, and Proxmox hosts running virtualized Kubernetes clusters],
-            [Linux-Server, Switches, MikroTik-Router und Proxmox-Hosts mit virtualisierten Kubernetes-Clustern verwaltet],
+            [Managed Linux servers, switches, MikroTik routers, and Proxmox hosts running *virtualized Kubernetes clusters*],
+            [Linux-Server, Switches, MikroTik-Router und Proxmox-Hosts mit *virtualisierten Kubernetes-Clustern* verwaltet],
           )
         - #t(
             [Managed LDAP access and WireGuard/OpenVPN connectivity; configured site-to-site VPNs for encrypted multi-cloud communication],
             [LDAP-Zugänge und WireGuard-/OpenVPN-Verbindungen verwaltet; Site-to-Site-VPNs für verschlüsselte Multi-Cloud-Kommunikation konfiguriert],
           )
         - #t(
-            [Developed and deployed Python microservices (Flask, Django) with containerization],
-            [Containerisierte Python-Microservices (Flask, Django) entwickelt und bereitgestellt],
+            [Developed and deployed *Python microservices* (Flask, Django) with containerization],
+            [Containerisierte *Python-Microservices* (Flask, Django) entwickelt und bereitgestellt],
           )
         - #t(
             [Built and maintained CI/CD pipelines using GitLab],
             [CI/CD-Pipelines mit GitLab aufgebaut und betreut],
           )
         - #t(
-            [Monitored application resource usage and migrated on-premises resources to the cloud],
-            [Ressourcennutzung von Anwendungen überwacht und lokale Ressourcen in die Cloud migriert],
+            [Monitored application resource usage and *migrated on-premises resources to the cloud*],
+            [Ressourcennutzung von Anwendungen überwacht und *lokale Ressourcen in die Cloud migriert*],
           )
         - #t(
             [Mentored new developers and contributed to Django backend development],
