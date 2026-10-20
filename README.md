@@ -19,16 +19,16 @@ The template's contact and social icons also require the desktop fonts from
 Edit `cv.typ`, then generate `cv.pdf`:
 
 ```sh
-make
+typst compile cv.typ cv.pdf
 ```
 
-Or run `typst compile cv.typ cv.pdf` directly.
+Use `typst watch cv.typ cv.pdf` to rebuild automatically while editing.
 
 ## GitHub Actions
 
 The [Build CV workflow](.github/workflows/build-cv.yml) runs on pushes, pull
 requests, and manual dispatches. It installs Typst 0.14.2, Iosevka Nerd Fonts
-3.4.0, and Font Awesome Free 7.0.1, runs `make`, and uploads `cv.pdf` as the `cv` artifact. Download it from
+3.4.0, and Font Awesome Free 7.0.1, runs `typst compile cv.typ cv.pdf`, and uploads `cv.pdf` as the `cv` artifact. Download it from
 the workflow run's **Artifacts** section.
 
 ## Cloudflare Pages deployment
