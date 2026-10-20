@@ -66,6 +66,7 @@ jobs:
         id: pages_branch
         env:
           PRODUCTION_BRANCH: ${{ vars.CLOUDFLARE_PAGES_BRANCH || 'main' }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           if [[ "$GITHUB_EVENT_NAME" == 'release' ]]; then
             echo "branch=$PRODUCTION_BRANCH" >> "$GITHUB_OUTPUT"
@@ -75,9 +76,6 @@ jobs:
             short_sha=$(git rev-parse --short "$GITHUB_SHA")
             echo "branch=$short_sha" >> "$GITHUB_OUTPUT"
           fi
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-
       - name: Validate deployment credentials
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
