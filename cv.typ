@@ -1,10 +1,10 @@
 #import "@preview/datify:1.3.0": custom-date-format
 #import "@preview/neat-cv:1.2.0": cv, cv-with-side, entry, contact-info, social-links
 
-#let render-cv(lang: "en") = {
+#let render-cv(lang: "en", picture: "true") = {
   assert(lang in ("en", "de"), message: "Supported CV languages: en, de")
-  let picture = sys.inputs.at("picture", default: "true")
   assert(picture in ("true", "false"), message: "picture input must be true or false")
+
   // Keep translations beside each other; layout and CV facts are shared.
   let t(en, de) = if lang == "de" { de } else { en }
   let date-range(start, end) = {
@@ -205,4 +205,7 @@
   ]
 }
 
-#render-cv(lang: sys.inputs.at("lang", default: "en"))
+#render-cv(
+  lang: sys.inputs.at("lang", default: "en"),
+  picture: sys.inputs.at("picture", default: "true"),
+)
