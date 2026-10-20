@@ -23,13 +23,20 @@
       "Ich willige in die Verarbeitung der in meinem Lebenslauf enthaltenen personenbezogenen Daten gemäß Art. 6 Abs. 1 lit. a DSGVO (EU) 2016/679 ein.",
     )
     #let today = datetime.today()
+    #let cv-date = custom-date-format(today, lang: lang)
 
     #show: cv.with(
       profile-picture: if picture == "true" { image("img/profile.jpg") } else { none },
       paper-size: "a4",
       accent-color: rgb("#1F6875"),
       header-color: rgb("#243746"),
-      date: custom-date-format(today, lang: lang),
+      date: cv-date,
+      footer: [
+        #set align(center)
+        #set text(size: 5pt, fill: rgb("#777777"))
+        #gdpr-text
+        #block(above: 4pt)[#text(size: 7pt)[Jakub Stepien CV · #cv-date]]
+      ],
       body-font: "Iosevka NF",
       heading-font: "Iosevka NFP Medium Obl",
       author: (
@@ -86,18 +93,20 @@
       Python, Go, Bash; #t("DevOps tasks with Claude and Codex", "DevOps-Aufgaben mit Claude und Codex")
 
       = #t("Languages", "Sprachen")
-      *#t("Polish", "Polnisch")* #linebreak()
-      #t("Native", "Muttersprache")
-
-      *#t("German", "Deutsch")* #linebreak()
-      C2 — Goethe-Institut GDS
-
-      *#t("English", "Englisch")* #linebreak()
-      #t("Working proficiency; many years of professional use", "Langjährige Berufserfahrung")
-
-    #set text( size: 3.5pt)
-    #set align(bottom)
-    #gdpr-text
+      #set par(justify: false)
+      #table(
+        columns: (1fr,),
+        row-gutter: 1pt,
+        align: left,
+        stroke: none,
+        inset: 0pt,
+        table.cell(inset: (top: 4pt, bottom: 2pt))[*#t("Polish", "Polnisch")*],
+        table.cell(inset: (left: 6pt))[#t("Native", "Muttersprache")],
+        table.cell(inset: (top: 4pt, bottom: 2pt))[*#t("German", "Deutsch")*],
+        table.cell(inset: (left: 6pt))[C2 — Goethe-Institut GDS],
+        table.cell(inset: (top: 4pt, bottom: 2pt))[*#t("English", "Englisch")*],
+        table.cell(inset: (left: 6pt))[#t("Working proficiency; many years of professional use", "Langjährige Berufserfahrung")],
+      )
     ][
 
     = #t("Contact", "Kontakt")
