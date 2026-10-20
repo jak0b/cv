@@ -62,9 +62,9 @@ jobs:
     needs: build
     if: >-
       github.ref == 'refs/heads/main' &&
-      github.event_name != 'pull_request' &&
-      vars.CLOUDFLARE_PAGES_PROJECT != ''
+      github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
+    environment: cloudflare-deploy
     concurrency:
       group: cloudflare-pages-production
       cancel-in-progress: false
@@ -85,7 +85,9 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
         run: |
+          test -n "$CLOUDFLARE_PAGES_PROJECT" || { echo '::error::Set the CLOUDFLARE_PAGES_PROJECT environment variable'; exit 1; }
           test -n "$CLOUDFLARE_API_TOKEN" || { echo '::error::Set the CLOUDFLARE_API_TOKEN repository secret'; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo '::error::Set the CLOUDFLARE_ACCOUNT_ID repository secret'; exit 1; }
 

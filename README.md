@@ -38,18 +38,17 @@ project serving `cv.jak0b.com`. Successful pushes to `main` and manual runs on
 `main` deploy automatically once the settings below are configured. Pull requests
 only build the PDF.
 
-In [GitHub Actions settings](https://github.com/jak0b/cv/settings/secrets/actions),
-add these repository secrets:
+In the [cloudflare-deploy environment](https://github.com/jak0b/cv/settings/environments),
+add these environment secrets:
 
 - `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with **Account > Cloudflare Pages
   > Edit**, scoped to the account hosting the project.
 - `CLOUDFLARE_ACCOUNT_ID`: the account ID from the Cloudflare dashboard.
 
-Add these repository variables under **Settings > Secrets and variables > Actions
-> Variables**:
+Add these environment variables in the same `cloudflare-deploy` environment:
 
 - `CLOUDFLARE_PAGES_PROJECT`: the existing Pages project name, rather than the
-  custom domain. Setting this variable enables deployment.
+  custom domain.
 - `CLOUDFLARE_PAGES_BRANCH` (optional): the project's production branch in
   Cloudflare, if it is not `main`. This must match to update the production site.
 
