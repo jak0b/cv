@@ -69,7 +69,7 @@
   title: "DevOps Engineer",
   institution: "Grid Dynamics (contractor for a US based company)",
   location: "remote",
-  date: "Aug 2023 - Present",
+  date: "Aug 2023 - Oct 2026",
   [
   - Supported the deployment of a low-latency manufacturing system written in Go
   - Participated in an on-call rotation, troubleshooting incidents and following operational runbooks
