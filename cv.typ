@@ -10,8 +10,8 @@
   accent-color: rgb("#407287"),
   header-color: rgb("#8D949D"),
   date: custom-date-format(datetime.today()),
-  body-font: "IosevkaTerm NF",
-  heading-font: "IosevkaTerm NFP Medium Obl",
+  body-font: "Iosevka NF",
+  heading-font: "Iosevka NFP Medium Obl",
   author: (
     firstname: "Jakub",
     lastname: "Stepien",
