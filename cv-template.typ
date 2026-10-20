@@ -25,8 +25,8 @@
     #show: cv.with(
       profile-picture: image("img/profile.jpg"),
       paper-size: "a4",
-      accent-color: rgb("#407287"),
-      header-color: rgb("#8D949D"),
+      accent-color: rgb("#1F6875"),
+      header-color: rgb("#243746"),
       date: custom-date-format(today, lang: lang),
       body-font: "Iosevka NF",
       heading-font: "Iosevka NFP Medium Obl",
