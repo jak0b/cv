@@ -35,8 +35,10 @@
         lastname: "Stepien",
         email: "work@jak0b.com",
         position: ("DevOps Engineer"),
-        linkedin: "jak0b",
-        github: "jak0b",
+        custom-links: (
+          (icon-name: "github", url: "https://github.com/jak0b", label: "https://github.com/jak0b"),
+          (icon-name: "linkedin", url: "https://www.linkedin.com/in/jak0b", label: "https://www.linkedin.com/in/jak0b"),
+        ),
         phone: "+48 573 305 599"
       ),
     )
@@ -104,7 +106,7 @@
     )
 
     #grid(
-      columns: (1fr, 1fr),
+      columns: (0.8fr, 1.2fr),
       rect[#contact-info()],
       rect[#social-links()],
     )
