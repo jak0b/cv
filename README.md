@@ -41,10 +41,29 @@ PDFs are ignored by Git.
 
 ## GitHub Actions
 
+Pinned tool and font versions live in [.github/dependencies.json](.github/dependencies.json).
 The [Build CV workflow](.github/workflows/build-cv.yml) runs on pushes, pull
 requests, and manual dispatches. It installs Typst 0.14.2, Iosevka Nerd Fonts
 3.4.0, and Font Awesome Free 7.0.1, builds both language versions, and uploads
 `cv.pdf` and `cv-de.pdf` together as the `cv` artifact. Download it from the workflow run's **Artifacts** section.
+
+The [Update build dependencies workflow](.github/workflows/update-dependencies.yml)
+checks upstream GitHub releases every Monday at 07:23 UTC and can also be run
+manually. It opens or refreshes one PR for newer stable Typst, Nerd Fonts, and
+Font Awesome releases, updating the version file and the versions and links in
+this README and `AGENTS.md`. Unchanged versions produce no PR.
+
+Updates use the same build action as normal CI. Required font families must be
+present, and both PDFs must compile and pass the one-page A4 check before the PR
+is opened. Download the `updated-cv` artifact linked in the PR and visually inspect
+both PDFs before merging. Incompatible releases (including font family renames)
+fail the workflow and require a manual compatibility fix.
+
+Enable **Allow GitHub Actions to create and approve pull requests** under
+**Settings > Actions > General > Workflow permissions**. The workflow uses the
+built-in `GITHUB_TOKEN`; no additional secret is needed. PRs created with this
+token do not trigger the normal push/PR workflows, so validation runs directly
+in the updater before it creates the PR. Merging runs the normal build and deployment.
 
 ## Cloudflare Pages deployment
 

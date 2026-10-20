@@ -1,0 +1,68 @@
+name: Update build dependencies
+
+on:
+  schedule:
+    - cron: '23 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-build-dependencies
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Check latest stable releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/update-dependencies.py
+
+      - name: Detect updates
+        id: changes
+        run: |
+          if ! git diff --quiet -- .github/dependencies.json; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate updated dependencies
+        if: steps.changes.outputs.changed == 'true'
+        uses: ./.github/actions/build-cv
+
+      - name: Upload updated CVs for visual review
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: updated-cv
+          path: |
+            cv.pdf
+            cv-de.pdf
+          if-no-files-found: error
+
+      - name: Create or update dependency PR
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: automation/update-build-dependencies
+          delete-branch: true
+          add-paths: |
+            .github/dependencies.json
+            README.md
+            AGENTS.md
+          commit-message: 'build(deps): update Typst and fonts'
+          title: 'build(deps): update Typst and fonts'
+          body: |
+            Update Typst, Iosevka Nerd Fonts, and Font Awesome Free to newer stable upstream releases, including documented versions and download links.
+
+            Both CVs were built with these versions, required fonts were verified, and each PDF passed the one-page A4 check before opening this PR.
+
+            Review both PDFs in the `updated-cv` artifact before merging:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
