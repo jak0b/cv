@@ -1,11 +1,9 @@
 VIEWER=zathura
-PAPER=cv.tex
+PAPER=cv.typ
 OUTPUT=cv.pdf
 
 all:
-	@xelatex $(PAPER)
-	@test -d out || mkidr out
-	@cp $(OUTPUT) out
+	typst compile $(PAPER) $(OUTPUT)
 
 view:
 	@test -f $(OUTPUT) && \
@@ -13,4 +11,4 @@ view:
 	disown -h $$!
 
 clean:
-	@for ext in aux out log pdf; do rm -v cv.$$ext; done
+	rm -f $(OUTPUT)
