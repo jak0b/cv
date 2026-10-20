@@ -213,7 +213,7 @@
       title: t("Bachelor's degree in Applied Informatics - Software Engineering", "Bachelor in Angewandter Informatik – Software Engineering"),
       institution: t("Cracow University of Economics", "Wirtschaftsuniversität Krakau"),
       date: date-range((2017, 9), (2021, 9)),
-      [#t([Thesis: "Rust a possible successor to C - overview of the language and sample programs"], [Abschlussarbeit: „Rust als möglicher Nachfolger von C – Überblick über die Sprache und Beispielprogramme“])],
+      [#t("Thesis", "Abschlussarbeit"): "Rust a possible successor to C - overview of the language and sample programs"],
     )
     ]
   ]
