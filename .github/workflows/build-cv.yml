@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
@@ -37,12 +38,14 @@ jobs:
     needs: build
     if: >-
       github.event_name == 'release' ||
-      (github.ref == 'refs/heads/main' && github.event_name != 'pull_request')
+      (github.ref == 'refs/heads/main' && github.event_name != 'pull_request') ||
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-24.04
     environment: cloudflare-deploy
     concurrency:
-      group: cloudflare-pages-${{ github.event_name == 'release' && 'production' || github.sha }}
-      cancel-in-progress: false
+      group: cloudflare-pages-${{ github.event_name == 'release' && 'production' || github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.sha }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -66,10 +69,14 @@ jobs:
         run: |
           if [[ "$GITHUB_EVENT_NAME" == 'release' ]]; then
             echo "branch=$PRODUCTION_BRANCH" >> "$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_EVENT_NAME" == 'pull_request' ]]; then
+            echo "branch=pr-$PR_NUMBER" >> "$GITHUB_OUTPUT"
           else
             short_sha=$(git rev-parse --short "$GITHUB_SHA")
             echo "branch=$short_sha" >> "$GITHUB_OUTPUT"
           fi
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
 
       - name: Validate deployment credentials
         env:
@@ -113,7 +120,7 @@ jobs:
             echo "Immutable deployment: $DEPLOYMENT_URL"
           fi
           if [[ "$GITHUB_EVENT_NAME" != 'release' && -n "$DEPLOYMENT_ALIAS_URL" ]]; then
-            echo "Commit alias: $DEPLOYMENT_ALIAS_URL"
+            echo "Preview alias: $DEPLOYMENT_ALIAS_URL"
           fi
           echo "English CV: $cv_base_url/cv.pdf"
           echo "German CV: $cv_base_url/cv-de.pdf"

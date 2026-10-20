@@ -3,16 +3,19 @@
 The [Build CV workflow](../.github/workflows/build-cv.yml) deploys the English
 and German PDFs, each with and without a picture, to the existing Cloudflare Pages
 project serving `cv.jak0b.com`.
-Pushes to `main` and manual runs on `main` create preview deployments after the
-build succeeds. Cloudflare assigns each preview an immutable URL such as
+Pushes to `main`, manual runs on `main`, and pull requests from this repository
+targeting `main` create preview deployments after the build succeeds. Cloudflare
+assigns each preview an immutable URL such as
 `<random-hash>.<project>.pages.dev`. The workflow names the preview branch after
-Git's short commit SHA, so Cloudflare also gives it a
-`<short-sha>.<project>.pages.dev` alias. The random hash is unrelated to the
-commit SHA and cannot be chosen through Wrangler; both addresses serve the same
-deployment. Publishing a GitHub release deploys the tagged commit to production.
-The workflow links to the commit alias for previews and `https://cv.jak0b.com`
+Git's short commit SHA for pushes and manual runs, or `pr-<number>` for pull
+requests. Cloudflare also gives it a stable branch alias. The random hash is
+unrelated to the commit SHA and cannot be chosen through Wrangler; both addresses
+serve the same deployment. Publishing a GitHub release deploys the tagged commit
+to production.
+The workflow links to the branch alias for previews and `https://cv.jak0b.com`
 for releases. It also prints the immutable deployment URL and links to all four
-CV versions in the job log and summary. Pull requests only build the PDFs.
+CV versions in the job log and summary. Fork pull requests build the PDFs but do
+not deploy because GitHub does not provide deployment secrets to fork PR runs.
 
 In the [cloudflare-deploy environment](https://github.com/jak0b/cv/settings/environments),
 add these secrets:
