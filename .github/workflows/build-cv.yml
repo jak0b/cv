@@ -3,6 +3,8 @@ name: Build CV
 on:
   push:
   pull_request:
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -33,12 +35,12 @@ jobs:
     name: Deploy to Cloudflare Pages
     needs: build
     if: >-
-      github.ref == 'refs/heads/main' &&
-      github.event_name != 'pull_request'
+      github.event_name == 'release' ||
+      (github.ref == 'refs/heads/main' && github.event_name != 'pull_request')
     runs-on: ubuntu-24.04
     environment: cloudflare-deploy
     concurrency:
-      group: cloudflare-pages-production
+      group: cloudflare-pages-${{ github.event_name == 'release' && 'production' || github.sha }}
       cancel-in-progress: false
     steps:
       - name: Check out repository
@@ -53,6 +55,18 @@ jobs:
       - name: Prepare Pages site
         run: cp cloudflare/_redirects public/_redirects
 
+      - name: Select Pages branch
+        id: pages_branch
+        env:
+          PRODUCTION_BRANCH: ${{ vars.CLOUDFLARE_PAGES_BRANCH || 'main' }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == 'release' ]]; then
+            echo "branch=$PRODUCTION_BRANCH" >> "$GITHUB_OUTPUT"
+          else
+            short_sha=$(git rev-parse --short "$GITHUB_SHA")
+            echo "branch=$short_sha" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Validate deployment credentials
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -64,6 +78,7 @@ jobs:
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo '::error::Set the CLOUDFLARE_ACCOUNT_ID repository secret'; exit 1; }
 
       - name: Deploy CV
+        id: deploy_cv
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -71,4 +86,26 @@ jobs:
           command: >-
             pages deploy public
             --project-name="${{ vars.CLOUDFLARE_PAGES_PROJECT }}"
-            --branch="${{ vars.CLOUDFLARE_PAGES_BRANCH || 'main' }}"
+            --branch="${{ steps.pages_branch.outputs.branch }}"
+            --commit-hash="${{ github.sha }}"
+
+      - name: Print CV deployment URL
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy_cv.outputs.deployment-url }}
+          DEPLOYMENT_ALIAS_URL: ${{ steps.deploy_cv.outputs.pages-deployment-alias-url }}
+        run: |
+          cv_base_url="${DEPLOYMENT_ALIAS_URL:-$DEPLOYMENT_URL}"
+          if [[ -z "$cv_base_url" ]]; then
+            echo '::error::Wrangler did not return a deployment URL'
+            exit 1
+          fi
+          cv_base_url="${cv_base_url%/}"
+          echo "CV deployment: $cv_base_url"
+          echo "English CV: $cv_base_url/cv.pdf"
+          {
+            echo '## CV deployment'
+            echo
+            echo "[Open deployment]($cv_base_url)"
+            echo
+            echo "[English CV]($cv_base_url/cv.pdf)"
+          } >> "$GITHUB_STEP_SUMMARY"

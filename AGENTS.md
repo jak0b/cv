@@ -7,7 +7,7 @@
   picture-free variants; English and a picture are defaults.
 - `img/` contains the profile image and other assets.
 - All four CV PDFs are generated output and ignored by Git; do not commit them.
-- `.github/workflows/build-cv.yml` builds all four PDFs and deploys them to Cloudflare Pages on `main`.
+- `.github/workflows/build-cv.yml` builds all four PDFs, deploys short-commit-named previews from `main`, and deploys production on published releases.
 
 ## Setup and local use
 
