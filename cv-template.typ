@@ -93,7 +93,7 @@
       C2 — Goethe-Institut GDS
 
       *#t("English", "Englisch")* #linebreak()
-      #t("Working proficiency; many years of professional use", "Langjährige Berufspraxis")
+      #t("Working proficiency; many years of professional use", "Langjährige Berufserfahrung")
 
     #set text( size: 3.5pt)
     #set align(bottom)
