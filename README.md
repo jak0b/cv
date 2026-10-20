@@ -1,7 +1,5 @@
 jak0b's CV
 =========================
-Originally based on [**deedy-resume**](https://github.com/deedy/Deedy-Resume).
-
 A **one-page**, **two asymmetric column** CV written in Typst using
 [neat-cv](https://typst.app/universe/package/neat-cv).
 
