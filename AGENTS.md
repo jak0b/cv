@@ -62,3 +62,26 @@ docs: add project guidance for agents
 fix(cv): keep experience section on one page
 ci: update the Typst build workflow
 ```
+
+## Releases
+
+Published GitHub releases deploy their tagged commit to the production site at
+`https://cv.jak0b.com`. Use version tags such as `v1.0.0`; check existing releases
+with `gh release list` before choosing the next version.
+
+Before publishing, ensure the intended commit is pushed to `main`, the working
+tree is clean, and its **Build CV** workflow run has passed. Then create a
+published release from that exact commit:
+
+```sh
+gh release create vX.Y.Z --target "$(git rev-parse HEAD)" \
+  --title "CV vX.Y.Z" --generate-notes --fail-on-no-commits
+```
+
+Replace `vX.Y.Z` with the chosen version. `gh release create` creates the tag
+and publishes the release; the `release: published` workflow then builds and
+checks all four PDFs and deploys them to Cloudflare Pages. Watch the release run
+with `gh run list --workflow build-cv.yml --event release --limit 1`, followed by
+`gh run watch <run-id> --exit-status`. After it passes, check the four production
+PDF links and confirm `/repo` redirects to the released commit. See
+`cloudflare/README.md` for deployment details.
