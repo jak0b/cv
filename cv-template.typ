@@ -1,5 +1,5 @@
 #import "@preview/datify:1.3.0": custom-date-format
-#import "@preview/neat-cv:1.2.0": cv, cv-with-side, entry, item-with-level, contact-info, social-links
+#import "@preview/neat-cv:1.2.0": cv, cv-with-side, entry, contact-info, social-links
 
 #let render-cv(lang: "en") = {
   assert(lang in ("en", "de"), message: "Supported CV languages: en, de")
@@ -21,13 +21,6 @@
       "Ich willige in die Verarbeitung der in meinem Lebenslauf enthaltenen personenbezogenen Daten gemäß Art. 6 Abs. 1 lit. a DSGVO (EU) 2016/679 ein.",
     )
     #let today = datetime.today()
-    #let experience-start = datetime(year: 2017, month: 9, day: 1)
-    #let expertise-years = (today - experience-start).days() / 365.2425 - 1
-    #let expertise-hundredths = int(calc.round(expertise-years * 100))
-    #let expertise-fraction = calc.rem(expertise-hundredths, 100)
-    #let expertise-display = str(int(calc.floor(expertise-hundredths / 100))) + "." + (
-      if expertise-fraction < 10 { "0" } else { "" }
-    ) + str(expertise-fraction)
 
     #show: cv.with(
       profile-picture: image("img/profile.jpg"),
@@ -55,30 +48,48 @@
     )
 
     #cv-with-side[
-      = #t("About Me", "Über mich")
-      #t([Experienced DevOps Engineer with #strong(expertise-display) years of expertise in system maintenance, Linux administration,
-      and software development. Well‑versed in networking, Docker, Kubernetes, Helm, and multiple cloud platforms (AWS, GCP),
-      with a focus on migrating on‑premises resources to the cloud.], [
-        Erfahrener DevOps Engineer mit #strong(expertise-display.replace(".", ",")) Jahren Erfahrung in Systemwartung,
-        Linux-Administration und Softwareentwicklung. Versiert in Netzwerken, Docker, Kubernetes,
-        Helm und Cloud-Plattformen (AWS, GCP). Schwerpunkt: Migration lokaler Ressourcen in die Cloud.
+      = #t("Profile", "Profil")
+      #t([DevOps Engineer with *7+ years of experience* across AWS infrastructure, Kubernetes,
+        Linux, and software development. Focused on infrastructure as code, GitOps migrations,
+        deployment automation, and production operations. Combines cloud experience with
+        hands-on networking, security, and backend development.], [
+        DevOps Engineer mit *über 7 Jahren Erfahrung* in AWS-Infrastruktur, Kubernetes,
+        Linux und Softwareentwicklung. Schwerpunkte: Infrastructure as Code, GitOps-Migrationen,
+        Deployment-Automatisierung und Produktionsbetrieb. Verbindet Cloud-Erfahrung mit
+        praktischen Kenntnissen in Netzwerken, Sicherheit und Backend-Entwicklung.
       ])
 
       = #t("Skills", "Kenntnisse")
-      #item-with-level("AWS: EC2, EKS, VPC, IAM, KMS", 4)
-      #item-with-level("Terraform & Infrastructure as Code", 3)
-      #item-with-level("Kubernetes, Helm & Docker", 4)
-      #item-with-level(t("Linux administration", "Linux-Administration"), 5)
-      #item-with-level("Argo CD, Jenkins & GitLab CI", 4)
-      #item-with-level("CloudWatch, Prometheus & Grafana", 3)
-      #item-with-level("Python, Go & Bash", 4)
-      #item-with-level(t("Networking & Cloud Security", "Netzwerke & Cloud-Sicherheit"), 4)
-      #item-with-level("Splunk & Loki", 3)
+      *Cloud* #linebreak()
+      AWS: EC2, EKS, VPC, IAM, KMS, MSK, MemoryDB; GCP
+
+      *Infrastructure as Code* #linebreak()
+      Terraform, Pulumi, CloudFormation, Ansible
+
+      *#t("Containers & Systems", "Container & Systeme")* #linebreak()
+      Kubernetes, Helm, Docker, Karpenter, Linux, Proxmox
+
+      *CI/CD & GitOps* #linebreak()
+      Argo CD, Jenkins, GitLab CI
+
+      *#t("Observability", "Monitoring & Logging")* #linebreak()
+      Prometheus, Grafana, CloudWatch, Splunk, Loki
+
+      *#t("Networking & Security", "Netzwerke & Sicherheit")* #linebreak()
+      VPN, LDAP, OIDC, PKI
+
+      *#t("Programming", "Programmierung")* #linebreak()
+      Python, Go, Bash
 
       = #t("Languages", "Sprachen")
-      #item-with-level(t("Polish", "Polnisch"), 5,  subtitle: t("mother tongue", "Muttersprache"))
-      #item-with-level(t("German", "Deutsch"), 4, subtitle: t([proficiency – C2,#linebreak()Goethe Institute GDS], [C2,#linebreak()Goethe-Institut GDS]))
-      #item-with-level(t("English", "Englisch"), 4, subtitle: t("working proficiency, many years of experience", "Langjährige Berufspraxis"))
+      *#t("Polish", "Polnisch")* #linebreak()
+      #t("Native", "Muttersprache")
+
+      *#t("German", "Deutsch")* #linebreak()
+      C2 — Goethe-Institut GDS
+
+      *#t("English", "Englisch")* #linebreak()
+      #t("Working proficiency; many years of professional use", "Langjährige Berufspraxis")
 
     #set text( size: 3.5pt)
     #set align(bottom)
@@ -102,26 +113,13 @@
 
     #entry(
       title: "DevOps Engineer",
-      institution: t("Grid Dynamics (contractor for a US based company)", "Grid Dynamics (Auftragnehmer für ein US-Unternehmen)"),
+      institution: t("Grid Dynamics (contractor for a US-based company)", "Grid Dynamics (Auftragnehmer für ein US-Unternehmen)"),
       location: t("remote", "Remote"),
       date: date-range((2023, 8), (2026, 10)),
       [
       - #t(
-          [Supported the deployment of a low-latency manufacturing system written in Go],
-          [Deployment eines latenzarmen Fertigungssystems in Go unterstützt],
-        )
-      - #t(
-          [Participated in an on-call rotation, troubleshooting incidents and following operational runbooks],
-          [Rufbereitschaft, Störungsanalyse und -behebung anhand von Runbooks],
-        )
-      - #t(
-          [Provisioned cloud resources in multiple environments using Terraform:],
-          [Cloud-Ressourcen mit Terraform in mehreren Umgebungen bereitgestellt:],
-        )
-        #list(tight: true,
-          [#t([AWS EC2 & EKS with auto-scaling and diverse networking configurations], [AWS EC2 & EKS mit Auto-Scaling und vielfältigen Netzwerkkonfigurationen])],
-          [#t([AWS MSK (Kafka) cluster with Snowflake connector], [AWS-MSK-Cluster (Kafka) mit Snowflake-Konnektor])],
-          [AWS MemoryDB],
+          [Provisioned AWS infrastructure across multiple environments with Terraform: EC2, EKS, MSK (Kafka) with a Snowflake connector, and MemoryDB],
+          [AWS-Infrastruktur mit Terraform in mehreren Umgebungen bereitgestellt: EC2, EKS, MSK (Kafka) mit Snowflake-Konnektor und MemoryDB],
         )
       - #t(
           [Imported existing cloud resources into Terraform to establish a single source of truth],
@@ -132,32 +130,20 @@
           [EKS-Kosten mit Karpenter und Spot-Instanzen optimiert],
         )
       - #t(
-          [Used Claude and Codex for DevOps work],
-          [Claude und Codex für DevOps-Aufgaben eingesetzt],
-        )
-      - #t(
-          [Migrated AWS CloudFormation stacks to Pulumi with Claude and automated deployments through CI pipelines],
-          [AWS-CloudFormation-Stacks mit Claude zu Pulumi migriert und Deployments über CI-Pipelines automatisiert],
+          [Migrated AWS CloudFormation stacks to Pulumi and automated infrastructure deployments through CI pipelines],
+          [AWS-CloudFormation-Stacks zu Pulumi migriert und Infrastruktur-Deployments über CI-Pipelines automatisiert],
         )
       - #t(
           [Migrated deployments from internal Jenkins pipelines to a GitOps approach with Argo CD],
           [Deployments von internen Jenkins-Pipelines auf GitOps mit Argo CD umgestellt],
         )
       - #t(
-          [Automated certificate issuance and management using an internal private PKI],
-          [Zertifikatsausstellung und -verwaltung mit interner privater PKI automatisiert],
+          [Automated certificate management with a private PKI and implemented OIDC authentication and authorization across multiple microservices],
+          [Zertifikatsverwaltung mit privater PKI automatisiert und OIDC-Authentifizierung und -Autorisierung für mehrere Microservices implementiert],
         )
       - #t(
-          [Configured Prometheus alerting rules for Kubernetes clusters],
-          [Prometheus-Alarmregeln für Kubernetes-Cluster konfiguriert],
-        )
-      - #t(
-          [Troubleshot AWS connectivity, reverse proxy, and load balancer issues with development teams],
-          [AWS-Verbindungs-, Reverse-Proxy- und Load-Balancer-Probleme mit Entwicklungsteams behoben],
-        )
-      - #t(
-          [Implemented OIDC authentication and authorization across multiple microservices],
-          [OIDC-Authentifizierung und -Autorisierung für mehrere Microservices implementiert],
+          [Supported deployments and on-call incident response for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
+          [Deployment und Rufbereitschaft für ein latenzarmes Fertigungssystem in Go unterstützt; Kubernetes-Alarme in Prometheus konfiguriert und Probleme mit AWS-Netzwerken, Reverse-Proxys und Load-Balancern behoben],
         )
       - #t(
           [Managed Rails applications with Ansible and automated build, test, and deployment workflows with Jenkins],
@@ -173,20 +159,12 @@
       date: date-range((2018, 9), (2022, 7)),
       [
         - #t(
-            [Managed networking infrastructure: servers (HP iLO, Intel BMC), switches, routers (MikroTik) for security and reliability],
-            [Netzwerkinfrastruktur für sicheren, zuverlässigen Betrieb verwaltet: Server (HP iLO, Intel BMC), Switches, Router (MikroTik)],
+            [Managed Linux servers, switches, MikroTik routers, and Proxmox hosts running virtualized Kubernetes clusters],
+            [Linux-Server, Switches, MikroTik-Router und Proxmox-Hosts mit virtualisierten Kubernetes-Clustern verwaltet],
           )
         - #t(
-            [Maintained Proxmox hosts for virtualization of Kubernetes clusters],
-            [Proxmox-Hosts zur Virtualisierung von Kubernetes-Clustern betreut],
-          )
-        - #t(
-            [Managed user and developer access via LDAP, VPNs (WireGuard, OpenVPN)],
-            [Benutzer- und Entwicklerzugänge über LDAP und VPNs (WireGuard, OpenVPN) verwaltet],
-          )
-        - #t(
-            [Configured site-to-site VPNs for multi-cloud encrypted communication],
-            [Site-to-Site-VPNs für verschlüsselte Multi-Cloud-Kommunikation konfiguriert],
+            [Managed LDAP access and WireGuard/OpenVPN connectivity; configured site-to-site VPNs for encrypted multi-cloud communication],
+            [LDAP-Zugänge und WireGuard-/OpenVPN-Verbindungen verwaltet; Site-to-Site-VPNs für verschlüsselte Multi-Cloud-Kommunikation konfiguriert],
           )
         - #t(
             [Developed and deployed Python microservices (Flask, Django) with containerization],
@@ -197,12 +175,8 @@
             [CI/CD-Pipelines mit GitLab aufgebaut und betreut],
           )
         - #t(
-            [Monitored resource usage of non-containerized apps and migrated resources to the cloud],
-            [Ressourcennutzung nicht containerisierter Anwendungen überwacht und Ressourcen in die Cloud migriert],
-          )
-        - #t(
-            [Maintained multi-user Jupyter kernels (TensorFlow, PyTorch, Anaconda)],
-            [Jupyter-Kernel für mehrere Benutzer betreut (TensorFlow, PyTorch, Anaconda)],
+            [Monitored application resource usage and migrated on-premises resources to the cloud],
+            [Ressourcennutzung von Anwendungen überwacht und lokale Ressourcen in die Cloud migriert],
           )
         - #t(
             [Mentored new developers and contributed to Django backend development],

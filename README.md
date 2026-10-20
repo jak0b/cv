@@ -92,7 +92,7 @@ no separate package installation command is needed.
 ## Build
 
 Both languages use `cv-template.typ`, which contains the shared layout, contact
-details, dates, skill ratings, and paired English/German translations. Edit this
+details, dates, skill groups, and paired English/German translations. Edit this
 file to update the CV. The entry points select the document language:
 
 - `cv.typ`: English → `cv.pdf`
