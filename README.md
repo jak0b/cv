@@ -1,30 +1,23 @@
 jak0b's CV
 =========================
-Based on [**deedy-resume**](https://github.com/deedy/Deedy-Resume). 
+Originally based on [**deedy-resume**](https://github.com/deedy/Deedy-Resume).
 
-A **one-page**, **two asymmetric column** resume template in **XeTeX** that caters particularly to  Computer Science students.
-Has a bunch of font options as listed in Preview. 
+A **one-page**, **two asymmetric column** CV written in Typst using
+[neat-cv](https://typst.app/universe/package/neat-cv).
 
 ## Dependencies
 
-1. Compiles only with **XeTeX** and required **BibTex** for compiling publications and the .bib filetype.
+Install [Typst](https://typst.app/) to build the CV. The first build downloads
+the packages imported by `cv.typ`.
 
 
-## Changelog
+## Build
 
-### v1.1
+Edit `cv.typ`, then generate `cv.pdf`:
 
-  1. Added more font options.
-  2. Added icons for contact line, fixed alignment.
-  3. Removed "Awards".
+```sh
+make
+```
 
-## TODO
-
-1. Add more font options.
-2. Allow for multiple pages and overflow.
-
-## Known Issues:
-
-1. Overflows if vertical limit reached.
-2. First bullet point on the second column needs a proper fix.
+Or run `typst compile cv.typ cv.pdf` directly.
 
