@@ -87,21 +87,19 @@ Homebrew and Arch may install a newer Typst release. The pinned version is in
 
 ## Build
 
-Both languages use `cv-template.typ`, which contains the shared layout, contact
-details, dates, skill groups, and paired English/German translations. Edit this
-file to update the CV. The entry points select the document language, and the
-optional `picture` input controls whether the profile photo appears:
-
-- `cv.typ`: English → `cv.pdf` or `cv-no-picture.pdf`
-- `cv-de.typ`: German → `cv-de.pdf` or `cv-de-no-picture.pdf`
+`cv.typ` is the single entry point. It uses `cv-template.typ`, which contains the
+shared layout, contact details, dates, skill groups, and paired English/German
+translations. Edit the template to update the CV. The `lang` input selects
+`en` or `de` (default: `en`); the `picture` input selects `true` or `false`
+(default: `true`).
 
 Build all four versions:
 
 ```sh
 typst compile cv.typ cv.pdf
-typst compile cv-de.typ cv-de.pdf
+typst compile --input lang=de cv.typ cv-de.pdf
 typst compile --input picture=false cv.typ cv-no-picture.pdf
-typst compile --input picture=false cv-de.typ cv-de-no-picture.pdf
+typst compile --input lang=de --input picture=false cv.typ cv-de-no-picture.pdf
 ```
 
 On macOS, check that all outputs have one A4 page with PDFKit. The script keeps
@@ -120,8 +118,8 @@ pdfinfo cv-no-picture.pdf
 pdfinfo cv-de-no-picture.pdf
 ```
 
-Use `typst watch cv.typ cv.pdf` or `typst watch cv-de.typ cv-de.pdf` to
-rebuild automatically while editing. All four PDFs must remain exactly one A4 page;
+Use `typst watch cv.typ cv.pdf` or `typst watch --input lang=de cv.typ cv-de.pdf`
+to rebuild automatically while editing. All four PDFs must remain exactly one A4 page;
 check the page count and visually inspect each after changing shared content.
 The shared template rejects builds that overflow onto a second page. Generated
 PDFs are ignored by Git.

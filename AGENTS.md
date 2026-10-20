@@ -2,8 +2,8 @@
 
 ## Project structure
 
-- `cv.typ` and `cv-de.typ` select English and German respectively. The
-  `picture=false` Typst input selects their picture-free variants.
+- `cv.typ` is the single entry point. The `lang=de` Typst input selects German,
+  and `picture=false` selects picture-free variants; English and a picture are defaults.
 - `cv-template.typ` shares the layout, CV facts, and paired translations, built
   with Typst and `neat-cv`.
 - `img/` contains the profile image and other assets.
@@ -27,9 +27,9 @@ Run commands from the repository root:
 
 ```sh
 typst compile cv.typ cv.pdf    # Build English CV
-typst compile cv-de.typ cv-de.pdf # Build German CV
+typst compile --input lang=de cv.typ cv-de.pdf # Build German CV
 typst compile --input picture=false cv.typ cv-no-picture.pdf # English without picture
-typst compile --input picture=false cv-de.typ cv-de-no-picture.pdf # German without picture
+typst compile --input lang=de --input picture=false cv.typ cv-de-no-picture.pdf # German without picture
 typst watch cv.typ cv.pdf      # Rebuild automatically while editing
 open cv.pdf                   # Open the built PDF on macOS
 ```
