@@ -19,7 +19,7 @@ jobs:
         uses: typst-community/setup-typst@v5
         with:
           typst-version: '0.14.2'
-          cache-dependency-path: cv.typ
+          cache-dependency-path: '**/*.typ'
 
       - name: Configure font directory
         run: echo "TYPST_FONT_PATHS=$RUNNER_TEMP/fonts" >> "$GITHUB_ENV"
@@ -47,14 +47,18 @@ jobs:
           grep -Fx 'Font Awesome 7 Free' "$RUNNER_TEMP/fonts.txt"
           grep -Fx 'Font Awesome 7 Brands' "$RUNNER_TEMP/fonts.txt"
 
-      - name: Build PDF
-        run: typst compile cv.typ cv.pdf
+      - name: Build PDFs
+        run: |
+          typst compile cv.typ cv.pdf
+          typst compile cv-de.typ cv-de.pdf
 
       - name: Upload CV
         uses: actions/upload-artifact@v7
         with:
           name: cv
-          path: cv.pdf
+          path: |
+            cv.pdf
+            cv-de.pdf
           if-no-files-found: error
 
   deploy:

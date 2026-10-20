@@ -2,10 +2,12 @@
 
 ## Project structure
 
-- `cv.typ` is the source for the CV, built with Typst and `neat-cv`.
+- `cv.typ` and `cv-de.typ` select English and German respectively.
+- `cv-template.typ` shares the layout, CV facts, and paired translations, built
+  with Typst and `neat-cv`.
 - `img/` contains the profile image and other assets.
-- `cv.pdf` is generated output and is ignored by Git; do not commit it.
-- `.github/workflows/build-cv.yml` builds the PDF and deploys it to Cloudflare Pages on `main`.
+- `cv.pdf` and `cv-de.pdf` are generated output and ignored by Git; do not commit them.
+- `.github/workflows/build-cv.yml` builds both PDFs and deploys them to Cloudflare Pages on `main`.
 
 ## Setup and local use
 
@@ -18,7 +20,8 @@ The first build needs network access to download the packages imported by `cv.ty
 Run commands from the repository root:
 
 ```sh
-typst compile cv.typ cv.pdf    # Build cv.pdf
+typst compile cv.typ cv.pdf    # Build English CV
+typst compile cv-de.typ cv-de.pdf # Build German CV
 typst watch cv.typ cv.pdf      # Rebuild automatically while editing
 open cv.pdf                   # Open the built PDF on macOS
 ```
@@ -33,9 +36,11 @@ See `README.md` for dependency links and deployment configuration.
 - Preserve the two-column layout and verify that text, icons, and the profile
   image render correctly without clipping or overlap.
 - After changes to content, layout, fonts, or build configuration, run
-  `typst compile cv.typ cv.pdf`,
-  check the page count, and visually inspect `cv.pdf`. If Poppler is installed,
-  `pdfinfo cv.pdf` must report `Pages: 1`; otherwise check the count in a PDF viewer.
+  `typst compile cv.typ cv.pdf`
+  and `typst compile cv-de.typ cv-de.pdf`,
+  check the page counts, and visually inspect both PDFs. If Poppler is installed,
+  `pdfinfo cv.pdf` and `pdfinfo cv-de.pdf` must each report `Pages: 1`;
+  otherwise check the counts in a PDF viewer.
 - Keep CV claims and dates accurate; do not invent qualifications or experience.
 
 ## Commits
