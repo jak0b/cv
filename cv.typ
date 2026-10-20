@@ -3,13 +3,21 @@
 #import "@preview/linguify:0.5.0"
 
 #let gdpd_text = "I authorise the processing of personal data contained within my CV, according to GDPR (EU) 2016/679, Article 6.1(a)."
+#let today = datetime.today()
+#let experience-start = datetime(year: 2017, month: 9, day: 1)
+#let expertise-years = (today - experience-start).days() / 365.2425 - 1
+#let expertise-hundredths = int(calc.round(expertise-years * 100))
+#let expertise-fraction = calc.rem(expertise-hundredths, 100)
+#let expertise-display = str(int(calc.floor(expertise-hundredths / 100))) + "." + (
+  if expertise-fraction < 10 { "0" } else { "" }
+) + str(expertise-fraction)
 
 #show: cv.with(
   profile-picture: image("img/profile.jpg"),
   paper-size: "a4",
   accent-color: rgb("#407287"),
   header-color: rgb("#8D949D"),
-  date: custom-date-format(datetime.today()),
+  date: custom-date-format(today),
   body-font: "Iosevka NF",
   heading-font: "Iosevka NFP Medium Obl",
   author: (
@@ -25,7 +33,7 @@
 
 #cv-with-side[
   = About Me
-  Experienced DevOps Engineer with 7 years of expertise in system maintenance, Linux administration,
+  Experienced DevOps Engineer with #strong(expertise-display) years of expertise in system maintenance, Linux administration,
   and software development. Well‑versed in networking, Docker, Kubernetes, Helm, and multiple cloud platforms (AWS, GCP),
   with a focus on migrating on‑premises resources to the cloud.
 
