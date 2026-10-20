@@ -13,6 +13,8 @@
 
 Pinned build dependency versions are maintained in `.github/dependencies.json`.
 The scheduled update workflow keeps the versions below and in `README.md` in sync.
+It also checks the Typst package index and updates `@preview` package imports in
+the root `.typ` files, including `datify` and `neat-cv` in `cv-template.typ`.
 
 Install Typst (0.14.2 matches CI), Iosevka Nerd Fonts 3.4.0, and
 Font Awesome Free 7.0.1 desktop fonts. The required font families are

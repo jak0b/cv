@@ -12,6 +12,66 @@ SPEC.loader.exec_module(updater)
 
 
 class UpdateTests(unittest.TestCase):
+    def test_package_index_selects_latest_stable_semantically(self):
+        index = [
+            {"name": "datify", "version": version}
+            for version in ("1.9.0", "1.11.0-rc1", "1.10.0", "0.1.0")
+        ] + [
+            {"name": "datify", "version": "2.0.0", "yanked": True},
+            {"name": "neat-cv", "version": "1.2.0"},
+        ]
+        self.assertEqual(
+            updater.latest_package_versions(index, ("datify", "neat-cv")),
+            {"datify": "1.10.0", "neat-cv": "1.2.0"},
+        )
+        with self.assertRaisesRegex(ValueError, "No stable release"):
+            updater.latest_package_versions(index, ("missing",))
+
+    def test_package_only_updates_preserve_import_symbols_and_other_content(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / ".github").mkdir()
+            manifest = root / ".github/dependencies.json"
+            manifest.write_text('{"typst": "0.15.1"}\n')
+            for filename in ("README.md", "AGENTS.md"):
+                (root / filename).write_text("Typst 0.15.1\n")
+            template = root / "cv-template.typ"
+            template.write_text(
+                '#import "@preview/datify:1.3.0": custom-date-format\n'
+                '#import "@preview/neat-cv:1.2.0": cv, entry\n'
+                '#let cv-fact = "1.3.0"\n'
+            )
+            other = root / "cv.typ"
+            other.write_text('#import "@preview/datify:1.3.0": custom-date-format\n')
+            self.assertEqual(updater.package_versions(root), {"datify": "1.3.0", "neat-cv": "1.2.0"})
+            latest = {"typst": "0.15.1", "datify": "1.4.0", "neat-cv": "1.10.0"}
+            updater.update(root, latest)
+            self.assertEqual(template.read_text(),
+                '#import "@preview/datify:1.4.0": custom-date-format\n'
+                '#import "@preview/neat-cv:1.10.0": cv, entry\n'
+                '#let cv-fact = "1.3.0"\n'
+            )
+            self.assertIn('@preview/datify:1.4.0', other.read_text())
+            self.assertEqual(manifest.read_text(), '{\n  "typst": "0.15.1"\n}\n')
+            before = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
+            updater.update(root, latest)
+            updater.update(root, {"typst": "0.15.1", "datify": "1.3.0", "neat-cv": "1.2.0"})
+            self.assertEqual(before, {p: p.read_bytes() for p in before})
+
+    def test_conflicting_package_pins_fail_before_writes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / ".github").mkdir()
+            manifest = root / ".github/dependencies.json"
+            manifest.write_text('{"typst": "0.14.2"}\n')
+            template = root / "cv-template.typ"
+            text = '#import "@preview/datify:1.2.0"\n#import "@preview/datify:1.3.0"\n'
+            template.write_text(text)
+            with self.assertRaisesRegex(ValueError, "Conflicting import versions"):
+                updater.update(root, {"typst": "0.15.1", "datify": "1.4.0"})
+            self.assertEqual(template.read_text(), text)
+            self.assertEqual(manifest.read_text(), '{"typst": "0.14.2"}\n')
+
     def test_only_stable_releases_with_expected_font_assets(self):
         release = {
             "draft": False, "prerelease": False, "tag_name": "v3.5.0",
