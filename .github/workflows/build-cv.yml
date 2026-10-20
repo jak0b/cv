@@ -53,7 +53,10 @@ jobs:
           path: public
 
       - name: Prepare Pages site
-        run: cp cloudflare/_redirects public/_redirects
+        run: |
+          cp cloudflare/_redirects public/_redirects
+          printf '/repo https://github.com/%s/tree/%s 302\n' \
+            "$GITHUB_REPOSITORY" "$GITHUB_SHA" >> public/_redirects
 
       - name: Select Pages branch
         id: pages_branch

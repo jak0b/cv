@@ -26,11 +26,12 @@ Add these variables in the same environment:
 
 Both deployment types upload all four PDFs and [redirects](./_redirects) from
 `/` and `/en` to `/cv.pdf`, `/de` to `/cv-de.pdf`, `/no-picture` to
-`/cv-no-picture.pdf`, `/ohne-bild` to `/cv-de-no-picture.pdf`, and `/repo` to the
-[source repository](https://github.com/jak0b/cv). Preview deployments leave
-the production site untouched; release deployments update it. The existing
-custom-domain binding stays on the Cloudflare project. If the project has Git
-integration, disable its automatic builds to avoid competing deployments.
+`/cv-no-picture.pdf`, and `/ohne-bild` to `/cv-de-no-picture.pdf`. The workflow
+adds a `/repo` redirect to the full GitHub commit used for that deployment.
+Preview deployments leave the production site untouched; release deployments
+update it. The existing custom-domain binding stays on the Cloudflare project.
+If the project has Git integration, disable its automatic builds to avoid
+competing deployments.
 
 See [Cloudflare's CI deployment guide](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/)
 for API token setup. After configuring the settings, run **Build CV** manually
