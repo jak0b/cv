@@ -2,10 +2,9 @@
 
 ## Project structure
 
-- `cv.typ` is the single entry point. The `lang=de` Typst input selects German,
-  and `picture=false` selects picture-free variants; English and a picture are defaults.
-- `cv-template.typ` shares the layout, CV facts, and paired translations, built
-  with Typst and `neat-cv`.
+- `cv.typ` contains the layout, CV facts, and paired translations, built with Typst
+  and `neat-cv`. The `lang=de` input selects German, and `picture=false` selects
+  picture-free variants; English and a picture are defaults.
 - `img/` contains the profile image and other assets.
 - All four CV PDFs are generated output and ignored by Git; do not commit them.
 - `.github/workflows/build-cv.yml` builds all four PDFs and deploys them to Cloudflare Pages on `main`.
@@ -15,7 +14,7 @@
 Pinned build dependency versions are maintained in `.github/dependencies.json`.
 The scheduled update workflow keeps the versions below and in `README.md` in sync.
 It also checks the Typst package index and updates `@preview` package imports in
-the root `.typ` files, including `datify` and `neat-cv` in `cv-template.typ`.
+`cv.typ`, including `datify` and `neat-cv`.
 
 Install Typst (0.15.1 matches CI), Iosevka Nerd Fonts 3.5.1, and
 Font Awesome Free 7.3.1 desktop fonts. The required font families are

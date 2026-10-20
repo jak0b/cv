@@ -17,7 +17,7 @@ runs:
       uses: typst-community/setup-typst@v5
       with:
         typst-version: ${{ steps.versions.outputs.typst }}
-        cache-dependency-path: cv-template.typ
+        cache-dependency-path: cv.typ
 
     - name: Configure font directory
       shell: bash

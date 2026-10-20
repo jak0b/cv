@@ -87,10 +87,9 @@ Homebrew and Arch may install a newer Typst release. The pinned version is in
 
 ## Build
 
-`cv.typ` is the single entry point. It uses `cv-template.typ`, which contains the
-shared layout, contact details, dates, skill groups, and paired English/German
-translations. Edit the template to update the CV. The `lang` input selects
-`en` or `de` (default: `en`); the `picture` input selects `true` or `false`
+`cv.typ` contains the shared layout, contact details, dates, skill groups, and
+paired English/German translations. Edit this file to update the CV. The `lang`
+input selects `en` or `de` (default: `en`); the `picture` input selects `true` or `false`
 (default: `true`).
 
 Build all four versions:
@@ -121,5 +120,5 @@ pdfinfo cv-de-no-picture.pdf
 Use `typst watch cv.typ cv.pdf` or `typst watch --input lang=de cv.typ cv-de.pdf`
 to rebuild automatically while editing. All four PDFs must remain exactly one A4 page;
 check the page count and visually inspect each after changing shared content.
-The shared template rejects builds that overflow onto a second page. Generated
+The source rejects builds that overflow onto a second page. Generated
 PDFs are ignored by Git.

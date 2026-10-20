@@ -35,23 +35,20 @@ class UpdateTests(unittest.TestCase):
             manifest.write_text('{"typst": "0.15.1"}\n')
             for filename in ("README.md", "AGENTS.md"):
                 (root / filename).write_text("Typst 0.15.1\n")
-            template = root / "cv-template.typ"
-            template.write_text(
+            cv = root / "cv.typ"
+            cv.write_text(
                 '#import "@preview/datify:1.3.0": custom-date-format\n'
                 '#import "@preview/neat-cv:1.2.0": cv, entry\n'
                 '#let cv-fact = "1.3.0"\n'
             )
-            other = root / "cv.typ"
-            other.write_text('#import "@preview/datify:1.3.0": custom-date-format\n')
             self.assertEqual(updater.package_versions(root), {"datify": "1.3.0", "neat-cv": "1.2.0"})
             latest = {"typst": "0.15.1", "datify": "1.4.0", "neat-cv": "1.10.0"}
             updater.update(root, latest)
-            self.assertEqual(template.read_text(),
+            self.assertEqual(cv.read_text(),
                 '#import "@preview/datify:1.4.0": custom-date-format\n'
                 '#import "@preview/neat-cv:1.10.0": cv, entry\n'
                 '#let cv-fact = "1.3.0"\n'
             )
-            self.assertIn('@preview/datify:1.4.0', other.read_text())
             self.assertEqual(manifest.read_text(), '{\n  "typst": "0.15.1"\n}\n')
             before = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
             updater.update(root, latest)
@@ -64,12 +61,12 @@ class UpdateTests(unittest.TestCase):
             (root / ".github").mkdir()
             manifest = root / ".github/dependencies.json"
             manifest.write_text('{"typst": "0.14.2"}\n')
-            template = root / "cv-template.typ"
+            cv = root / "cv.typ"
             text = '#import "@preview/datify:1.2.0"\n#import "@preview/datify:1.3.0"\n'
-            template.write_text(text)
+            cv.write_text(text)
             with self.assertRaisesRegex(ValueError, "Conflicting import versions"):
                 updater.update(root, {"typst": "0.15.1", "datify": "1.4.0"})
-            self.assertEqual(template.read_text(), text)
+            self.assertEqual(cv.read_text(), text)
             self.assertEqual(manifest.read_text(), '{"typst": "0.14.2"}\n')
 
     def test_only_stable_releases_with_expected_font_assets(self):
