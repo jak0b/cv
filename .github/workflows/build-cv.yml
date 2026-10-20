@@ -25,6 +25,8 @@ jobs:
           path: |
             cv.pdf
             cv-de.pdf
+            cv-no-picture.pdf
+            cv-de-no-picture.pdf
           if-no-files-found: error
 
   deploy:

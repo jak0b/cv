@@ -1,5 +1,5 @@
 name: Build and validate CV
-description: Install pinned Typst and fonts and build both one-page A4 PDFs
+description: Install pinned Typst and fonts and build all one-page A4 PDFs
 runs:
   using: composite
   steps:
@@ -53,6 +53,8 @@ runs:
       run: |
         typst compile cv.typ cv.pdf
         typst compile cv-de.typ cv-de.pdf
+        typst compile --input picture=false cv.typ cv-no-picture.pdf
+        typst compile --input picture=false cv-de.typ cv-de-no-picture.pdf
 
     - name: Verify one A4 page per PDF
       shell: bash
@@ -61,7 +63,7 @@ runs:
           sudo apt-get update
           sudo apt-get install --yes poppler-utils
         fi
-        for pdf in cv.pdf cv-de.pdf; do
+        for pdf in cv.pdf cv-de.pdf cv-no-picture.pdf cv-de-no-picture.pdf; do
           pdfinfo "$pdf" | tee "$RUNNER_TEMP/pdfinfo.txt"
           grep -Eq '^Pages: +1$' "$RUNNER_TEMP/pdfinfo.txt"
           grep -Eq '^Page size: .*\(A4\)$' "$RUNNER_TEMP/pdfinfo.txt"

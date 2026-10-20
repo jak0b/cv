@@ -1,7 +1,8 @@
 # Cloudflare Pages deployment
 
 The [Build CV workflow](../.github/workflows/build-cv.yml) deploys the English
-and German PDFs to the existing Cloudflare Pages project serving `cv.jak0b.com`.
+and German PDFs, each with and without a picture, to the existing Cloudflare Pages
+project serving `cv.jak0b.com`.
 Pushes to `main` and manual runs on `main` deploy after the build succeeds. Pull
 requests only build the PDFs.
 
@@ -19,8 +20,9 @@ Add these variables in the same environment:
 - `CLOUDFLARE_PAGES_BRANCH` (optional): the project's production branch in
   Cloudflare, if it is not `main`. This must match to update the production site.
 
-Deployments upload `cv.pdf`, `cv-de.pdf`, and [redirects](./_redirects) from
-`/` and `/en` to `/cv.pdf`, `/de` to `/cv-de.pdf`, and `/repo` to the
+Deployments upload all four PDFs and [redirects](./_redirects) from
+`/` and `/en` to `/cv.pdf`, `/de` to `/cv-de.pdf`, `/no-picture` to
+`/cv-no-picture.pdf`, `/ohne-bild` to `/cv-de-no-picture.pdf`, and `/repo` to the
 [source repository](https://github.com/jak0b/cv), replacing the project's
 current site files. The existing custom-domain binding stays on the Cloudflare
 project. If the project has Git integration, disable its automatic production

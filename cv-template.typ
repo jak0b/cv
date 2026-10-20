@@ -3,6 +3,8 @@
 
 #let render-cv(lang: "en") = {
   assert(lang in ("en", "de"), message: "Supported CV languages: en, de")
+  let picture = sys.inputs.at("picture", default: "true")
+  assert(picture in ("true", "false"), message: "picture input must be true or false")
   // Keep translations beside each other; layout and CV facts are shared.
   let t(en, de) = if lang == "de" { de } else { en }
   let date-range(start, end) = {
@@ -23,7 +25,7 @@
     #let today = datetime.today()
 
     #show: cv.with(
-      profile-picture: image("img/profile.jpg"),
+      profile-picture: if picture == "true" { image("img/profile.jpg") } else { none },
       paper-size: "a4",
       accent-color: rgb("#1F6875"),
       header-color: rgb("#243746"),

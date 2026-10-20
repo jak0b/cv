@@ -46,6 +46,8 @@ jobs:
           path: |
             cv.pdf
             cv-de.pdf
+            cv-no-picture.pdf
+            cv-de-no-picture.pdf
           if-no-files-found: error
 
       - name: Create or update dependency PR
@@ -63,7 +65,7 @@ jobs:
           body: |
             Update Typst, Iosevka Nerd Fonts, Font Awesome Free, and imported Typst preview packages to newer stable releases, including package imports, documented versions, and download links.
 
-            Both CVs were built with these versions, required fonts were verified, and each PDF passed the one-page A4 check before opening this PR.
+            All four CVs were built with these versions, required fonts were verified, and each PDF passed the one-page A4 check before opening this PR.
 
-            Review both PDFs in the `updated-cv` artifact before merging:
+            Review all four PDFs in the `updated-cv` artifact before merging:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

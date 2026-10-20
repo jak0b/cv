@@ -5,6 +5,8 @@ A **one-page**, **two asymmetric column** CV written in Typst using
 
 - [English CV (PDF)](https://cv.jak0b.com/cv.pdf)
 - [German CV (PDF)](https://cv.jak0b.com/cv-de.pdf)
+- [English CV without a picture (PDF)](https://cv.jak0b.com/no-picture)
+- [German CV without a picture (PDF)](https://cv.jak0b.com/ohne-bild)
 
 ## Dependencies
 
@@ -87,27 +89,39 @@ Homebrew and Arch may install a newer Typst release. The pinned version is in
 
 Both languages use `cv-template.typ`, which contains the shared layout, contact
 details, dates, skill groups, and paired English/German translations. Edit this
-file to update the CV. The entry points select the document language:
+file to update the CV. The entry points select the document language, and the
+optional `picture` input controls whether the profile photo appears:
 
-- `cv.typ`: English → `cv.pdf`
-- `cv-de.typ`: German → `cv-de.pdf`
+- `cv.typ`: English → `cv.pdf` or `cv-no-picture.pdf`
+- `cv-de.typ`: German → `cv-de.pdf` or `cv-de-no-picture.pdf`
 
-Build both versions:
+Build all four versions:
 
 ```sh
 typst compile cv.typ cv.pdf
 typst compile cv-de.typ cv-de.pdf
+typst compile --input picture=false cv.typ cv-no-picture.pdf
+typst compile --input picture=false cv-de.typ cv-de-no-picture.pdf
 ```
 
-Check that both outputs report `Pages: 1` and an A4 page size:
+On macOS, check that all outputs have one A4 page with PDFKit. The script keeps
+Swift's module cache in `/tmp/cv-swift-cache`:
+
+```sh
+sh scripts/check-pdfs.sh
+```
+
+On other systems, check with Poppler:
 
 ```sh
 pdfinfo cv.pdf
 pdfinfo cv-de.pdf
+pdfinfo cv-no-picture.pdf
+pdfinfo cv-de-no-picture.pdf
 ```
 
 Use `typst watch cv.typ cv.pdf` or `typst watch cv-de.typ cv-de.pdf` to
-rebuild automatically while editing. Both PDFs must remain exactly one A4 page;
-check the page count and visually inspect both after changing shared content.
+rebuild automatically while editing. All four PDFs must remain exactly one A4 page;
+check the page count and visually inspect each after changing shared content.
 The shared template rejects builds that overflow onto a second page. Generated
 PDFs are ignored by Git.
