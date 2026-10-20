@@ -54,9 +54,9 @@
         deployment automation, and production operations. Combines cloud experience with
         hands-on networking, security, and backend development.], [
         DevOps Engineer mit *über 7 Jahren Erfahrung* in AWS-Infrastruktur, Kubernetes,
-        Linux und Softwareentwicklung. Schwerpunkte: Infrastructure as Code, GitOps-Migrationen,
-        Deployment-Automatisierung und Produktionsbetrieb. Verbindet Cloud-Erfahrung mit
-        praktischen Kenntnissen in Netzwerken, Sicherheit und Backend-Entwicklung.
+        Linux und Softwareentwicklung. Fokus auf Infrastructure as Code, GitOps-Migrationen,
+        Deployment-Automatisierung und Produktionsbetrieb; Erfahrung mit Netzwerken,
+        Sicherheit und Backend-Entwicklung.
       ])
 
       = #t("Skills", "Kenntnisse")
@@ -78,8 +78,8 @@
       *#t("Networking & Security", "Netzwerke & Sicherheit")* #linebreak()
       VPN, LDAP, OIDC, PKI
 
-      *#t("Programming", "Programmierung")* #linebreak()
-      Python, Go, Bash
+      *#t("Programming & AI", "Programmierung & KI")* #linebreak()
+      Python, Go, Bash; #t("DevOps tasks with Claude and Codex", "DevOps-Aufgaben mit Claude und Codex")
 
       = #t("Languages", "Sprachen")
       *#t("Polish", "Polnisch")* #linebreak()
@@ -148,6 +148,10 @@
       - #t(
           [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date without downtime],
           [Ältere Ruby-on-Rails-Anwendungen als systemd-Dienste mit Ansible betreut; Builds, Tests und Deployments mit Jenkins automatisiert und die Systeme ohne Ausfallzeiten aktuell gehalten],
+        )
+      - #t(
+          [Mentored DevOps engineers],
+          [DevOps-Engineers fachlich begleitet],
         )
       ],
     )
