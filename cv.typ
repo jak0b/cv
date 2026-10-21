@@ -154,8 +154,8 @@
           [Deployments von internen Jenkins-Pipelines auf *GitOps mit Argo CD* umgestellt],
         )
       - #t(
-          [Automated certificate management with a private PKI and implemented *OIDC authentication and authorization* across multiple microservices],
-          [Zertifikatsverwaltung mit privater PKI automatisiert und *OIDC-Authentifizierung und -Autorisierung* für mehrere Microservices implementiert],
+          [Automated certificate management with a private PKI, implemented *OIDC authentication and authorization* across multiple *microservices*, and was responsible for gRPC *microservices*],
+          [Zertifikatsverwaltung mit privater PKI automatisiert, *OIDC-Authentifizierung und -Autorisierung* für mehrere *Microservices* implementiert und gRPC-*Microservices* verantwortet],
         )
       - #t(
           [Supported deployments and *on-call incident response* for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
