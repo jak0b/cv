@@ -51,10 +51,10 @@ runs:
     - name: Build PDFs
       shell: bash
       run: |
-        typst compile cv.typ cv.pdf
-        typst compile --input lang=de cv.typ cv-de.pdf
-        typst compile --input picture=false cv.typ cv-no-picture.pdf
-        typst compile --input lang=de --input picture=false cv.typ cv-de-no-picture.pdf
+        typst compile --input commit="$GITHUB_SHA" cv.typ cv.pdf
+        typst compile --input lang=de --input commit="$GITHUB_SHA" cv.typ cv-de.pdf
+        typst compile --input picture=false --input commit="$GITHUB_SHA" cv.typ cv-no-picture.pdf
+        typst compile --input lang=de --input picture=false --input commit="$GITHUB_SHA" cv.typ cv-de-no-picture.pdf
 
     - name: Verify one A4 page per PDF
       shell: bash

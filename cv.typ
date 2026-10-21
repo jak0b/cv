@@ -1,7 +1,7 @@
 #import "@preview/datify:1.3.0": custom-date-format
 #import "@preview/neat-cv:1.2.0": cv, cv-with-side, entry, contact-info, social-links
 
-#let render-cv(lang: "en", picture: "true") = {
+#let render-cv(lang: "en", picture: "true", commit: none) = {
   assert(lang in ("en", "de"), message: "Supported CV languages: en, de")
   assert(picture in ("true", "false"), message: "picture input must be true or false")
 
@@ -34,7 +34,10 @@
       footer: [
         #set align(center)
         #set text(size: 5pt, fill: rgb("#777777"))
-        #text(size: 7pt)[#t("Generated on", "Erstellt am") #cv-date]
+        #text(size: 7pt)[
+          #t("Generated on", "Erstellt am") #cv-date
+          #if commit != none [ · #link("https://github.com/jak0b/cv/commit/" + commit)[#commit.slice(0, 7)]]
+        ]
         #block(above: 4pt)[#gdpr-text]
       ],
       body-font: "Iosevka NF",
@@ -217,4 +220,5 @@
 #render-cv(
   lang: sys.inputs.at("lang", default: "en"),
   picture: sys.inputs.at("picture", default: "true"),
+  commit: sys.inputs.at("commit", default: none),
 )

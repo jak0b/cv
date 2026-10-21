@@ -90,7 +90,9 @@ Homebrew and Arch may install a newer Typst release. The pinned version is in
 `cv.typ` contains the shared layout, contact details, dates, skill groups, and
 paired English/German translations. Edit this file to update the CV. The `lang`
 input selects `en` or `de` (default: `en`); the `picture` input selects `true` or `false`
-(default: `true`).
+(default: `true`). Pass `--input commit=<full-sha>` to add a linked, shortened
+commit ID to the footer. Without that input, the footer omits the commit link.
+CI passes its build commit to all four versions.
 
 Build all four versions:
 
