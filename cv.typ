@@ -86,7 +86,7 @@
       *CI/CD & GitOps* #linebreak()
       Argo CD, Jenkins, GitLab CI
 
-      *#t("Observability", "Monitoring & Logging")* #linebreak()
+      *#t("Observability", "Observability")* #linebreak()
       Prometheus, Grafana, CloudWatch, Splunk, Loki
 
       *#t("Networking & Security", "Netzwerk & Security")* #linebreak()
@@ -129,7 +129,7 @@
 
     #entry(
       title: "DevOps Engineer",
-      institution: t("Grid Dynamics (contractor for a US-based company)", "Grid Dynamics (für ein US-Unternehmen tätig)"),
+      institution: t("Grid Dynamics (contractor for a US-based company)", "Grid Dynamics (Contractor für ein US-Unternehmen)"),
       location: t("remote", "Remote"),
       date: date-range((2023, 8), (2026, 10)),
       [
@@ -159,7 +159,7 @@
         )
       - #t(
           [Supported deployments and *on-call incident response* for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
-          [Deployments und *On-Call-Einsätze* für ein Go-basiertes Fertigungssystem mit geringer Latenz unterstützt; Prometheus-Alerts für Kubernetes konfiguriert und Probleme mit AWS-Netzwerken, Reverse Proxys und Load Balancern behoben],
+          [Deployments und *On-Call Incident Response* für ein latenzarmes Go-Fertigungssystem unterstützt; Prometheus-Alerts für Kubernetes konfiguriert und Probleme mit AWS-Netzwerken, Reverse Proxys und Load Balancern untersucht],
         )
       - #t(
           [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date *without downtime*],
@@ -200,7 +200,7 @@
           )
         - #t(
             [Mentored new developers and contributed to Django backend development],
-            [Neue Entwickler eingearbeitet und die Django-Backend-Entwicklung unterstützt],
+            [Neue Entwickler als Mentor begleitet und die Django-Backend-Entwicklung unterstützt],
           )
       ],
     )
