@@ -73,7 +73,7 @@
         Sicherheit und Backend-Entwicklung.
       ])
 
-      = #t("Skills", "Kenntnisse")
+      = #t("Skills", "Skills")
       *Cloud* #linebreak()
       AWS: EC2, EKS, VPC, IAM, KMS, MSK, MemoryDB; GCP
 
@@ -89,7 +89,7 @@
       *#t("Observability", "Monitoring & Logging")* #linebreak()
       Prometheus, Grafana, CloudWatch, Splunk, Loki
 
-      *#t("Networking & Security", "Netzwerke & Sicherheit")* #linebreak()
+      *#t("Networking & Security", "Netzwerk & Security")* #linebreak()
       VPN, LDAP, OIDC, PKI
 
       *#t("Programming & AI", "Programmierung & KI")* #linebreak()
@@ -108,7 +108,7 @@
         table.cell(inset: (top: 4pt, bottom: 2pt))[*#t("German", "Deutsch")*],
         table.cell(inset: (left: 6pt))[C2 — Goethe-Institut GDS],
         table.cell(inset: (top: 4pt, bottom: 2pt))[*#t("English", "Englisch")*],
-        table.cell(inset: (left: 6pt))[#t("Working proficiency; many years of professional use", "Langjährige Berufserfahrung")],
+        table.cell(inset: (left: 6pt))[#t("Working proficiency; many years of professional use", "Langjährige Berufserfahrung auf Englisch")],
       )
     ][
 
@@ -129,21 +129,21 @@
 
     #entry(
       title: "DevOps Engineer",
-      institution: t("Grid Dynamics (contractor for a US-based company)", "Grid Dynamics (Auftragnehmer für ein US-Unternehmen)"),
+      institution: t("Grid Dynamics (contractor for a US-based company)", "Grid Dynamics (für ein US-Unternehmen tätig)"),
       location: t("remote", "Remote"),
       date: date-range((2023, 8), (2026, 10)),
       [
       - #t(
           [Provisioned *AWS infrastructure* across multiple environments with *Terraform*: EC2, EKS, MSK (Kafka) with a Snowflake connector, and MemoryDB],
-          [*AWS-Infrastruktur* mit *Terraform* in mehreren Umgebungen bereitgestellt: EC2, EKS, MSK (Kafka) mit Snowflake-Konnektor und MemoryDB],
+          [*AWS-Infrastruktur* mit *Terraform* in mehreren Umgebungen aufgebaut und bereitgestellt: EC2, EKS, MSK (Kafka) mit Snowflake-Konnektor und MemoryDB],
         )
       - #t(
           [Imported existing cloud resources into Terraform to establish a single source of truth],
-          [Bestehende Cloud-Ressourcen zur zentralen Verwaltung in Terraform importiert],
+          [Bestehende Cloud-Ressourcen in Terraform importiert und so eine *Single Source of Truth* geschaffen],
         )
       - #t(
           [Optimized *EKS costs* with Karpenter and spot instances],
-          [*EKS-Kosten* mit Karpenter und Spot-Instanzen optimiert],
+          [*EKS-Kosten* durch Karpenter und Spot Instances optimiert],
         )
       - #t(
           [Migrated AWS CloudFormation stacks to Pulumi and automated infrastructure deployments through CI pipelines],
@@ -155,19 +155,19 @@
         )
       - #t(
           [Automated certificate management with a private PKI, implemented *OIDC authentication and authorization* across multiple *microservices*, and was responsible for gRPC *microservices*],
-          [Zertifikatsverwaltung mit privater PKI automatisiert, *OIDC-Authentifizierung und -Autorisierung* für mehrere *Microservices* implementiert und gRPC-*Microservices* verantwortet],
+          [Zertifikatsverwaltung mit einer privaten PKI automatisiert, *OIDC-Authentifizierung und -Autorisierung* für mehrere *Microservices* implementiert und gRPC-*Microservices* betreut],
         )
       - #t(
           [Supported deployments and *on-call incident response* for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
-          [Deployment und *Rufbereitschaft* für ein latenzarmes Fertigungssystem in Go unterstützt; Kubernetes-Alarme in Prometheus konfiguriert und Probleme mit AWS-Netzwerken, Reverse-Proxys und Load-Balancern behoben],
+          [Deployments und *On-Call-Einsätze* für ein Go-basiertes Fertigungssystem mit geringer Latenz unterstützt; Prometheus-Alerts für Kubernetes konfiguriert und Probleme mit AWS-Netzwerken, Reverse Proxys und Load Balancern behoben],
         )
       - #t(
           [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date *without downtime*],
-          [Ältere Ruby-on-Rails-Anwendungen als systemd-Dienste mit Ansible betreut; Builds, Tests und Deployments mit Jenkins automatisiert und die Systeme *ohne Ausfallzeiten* aktuell gehalten],
+          [Legacy-Ruby-on-Rails-Anwendungen als systemd-Dienste mit Ansible betreut; Builds, Tests und Deployments mit Jenkins automatisiert und die Systeme *ohne Downtime* aktuell gehalten],
         )
       - #t(
           [Mentored DevOps engineers],
-          [DevOps-Engineers fachlich begleitet],
+          [DevOps Engineers als Mentor unterstützt],
         )
       ],
     )
@@ -180,15 +180,15 @@
       [
         - #t(
             [Managed Linux servers, switches, MikroTik routers, and Proxmox hosts running *virtualized Kubernetes clusters*],
-            [Linux-Server, Switches, MikroTik-Router und Proxmox-Hosts mit *virtualisierten Kubernetes-Clustern* verwaltet],
+            [Linux-Server, Netzwerk-Switches, MikroTik-Router und Proxmox-Hosts mit *virtualisierten Kubernetes-Clustern* betreut],
           )
         - #t(
             [Managed LDAP access and WireGuard/OpenVPN connectivity; configured site-to-site VPNs for encrypted multi-cloud communication],
-            [LDAP-Zugänge und WireGuard-/OpenVPN-Verbindungen verwaltet; Site-to-Site-VPNs für verschlüsselte Multi-Cloud-Kommunikation konfiguriert],
+            [LDAP-Zugriffe sowie WireGuard- und OpenVPN-Verbindungen verwaltet; Site-to-Site-VPNs für verschlüsselte Multi-Cloud-Kommunikation eingerichtet],
           )
         - #t(
             [Developed and deployed *Python microservices* (Flask, Django) with containerization],
-            [Containerisierte *Python-Microservices* (Flask, Django) entwickelt und bereitgestellt],
+            [*Python-Microservices* mit Flask und Django entwickelt und als Container ausgerollt],
           )
         - #t(
             [Built and maintained CI/CD pipelines using GitLab],
@@ -196,11 +196,11 @@
           )
         - #t(
             [Monitored application resource usage and *migrated on-premises resources to the cloud*],
-            [Ressourcennutzung von Anwendungen überwacht und *lokale Ressourcen in die Cloud migriert*],
+            [Ressourcennutzung von Anwendungen überwacht und *On-Premises-Ressourcen in die Cloud migriert*],
           )
         - #t(
             [Mentored new developers and contributed to Django backend development],
-            [Neue Entwickler eingearbeitet und am Django-Backend mitentwickelt],
+            [Neue Entwickler eingearbeitet und die Django-Backend-Entwicklung unterstützt],
           )
       ],
     )
@@ -211,7 +211,7 @@
       title: t("Bachelor's degree in Applied Informatics - Software Engineering", "Bachelor in Angewandter Informatik – Software Engineering"),
       institution: t("Cracow University of Economics", "Wirtschaftsuniversität Krakau"),
       date: date-range((2017, 9), (2021, 9)),
-      [#t("Thesis", "Abschlussarbeit"): "Rust a possible successor to C - overview of the language and sample programs"],
+      [#t("Thesis", "Abschlussarbeit"): #t("Rust a possible successor to C - overview of the language and sample programs", "Rust als möglicher Nachfolger von C – Überblick über die Sprache und Beispielprogramme")],
     )
     ]
   ]
