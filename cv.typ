@@ -159,7 +159,7 @@
         )
       - #t(
           [Supported deployments and *on-call incident response* for a low-latency manufacturing system written in Go; configured Kubernetes alerts in Prometheus and troubleshot AWS networking, reverse proxies, and load balancers],
-          [Deployments und *On-Call Incident Response* für ein latenzarmes Go-Fertigungssystem unterstützt; Prometheus-Alerts für Kubernetes konfiguriert und Probleme mit AWS-Netzwerken, Reverse Proxys und Load Balancern untersucht],
+          [Deployments und *On-Call Incident Response* für ein *Low-Latency*-Fertigungssystem in Go unterstützt; Prometheus-Alerts für Kubernetes konfiguriert und Probleme mit AWS-Netzwerken, Reverse Proxys und Load Balancern untersucht],
         )
       - #t(
           [Maintained legacy Ruby on Rails applications running as systemd services with Ansible; automated builds, tests, and deployments with Jenkins while keeping the systems up to date *without downtime*],
